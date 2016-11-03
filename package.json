@@ -1,0 +1,16 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "web project developed by express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "zhaoyc",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "xtemplate": "^4.6.0",
+    "xtpl": "^3.3.0"
+  }
+}

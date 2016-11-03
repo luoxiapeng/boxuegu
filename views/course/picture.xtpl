@@ -1,0 +1,62 @@
+{{extend ('../layout')}}
+
+{{#block ('body')}}
+	<div class="body course-add">
+		<!-- 面包屑 -->
+		<ol class="breadcrumb">
+			<li><a href="javascript:;">课程管理</a></li>
+			<li class="active">课程添加</li>
+		</ol>
+		<div class="steps">
+			<!-- 摘要 -->
+			<div class="brief">
+				<div class="thumb">
+					<img src="/static/course_1.jpg" alt="">
+				</div>
+				<dl class="info">
+					<dt>Git 指南</dt>
+					<dd>讲师：李鹏周</dd>
+					<dd>课时：32</dd>
+				</dl>
+			</div>
+			<!-- 步聚 -->
+			<ul class="forwards list-unstyled">
+				<li>
+					<a href="/course/basic" class="done">
+					<b class="fa fa-check"></b>
+					基本信息
+					</a>
+				</li>
+				<li>
+					<a href="/course/picture" class="active">
+					<b>2</b>
+					课程图片
+					</a>
+				</li>
+				<li>
+					<a href="/course/lesson">
+					<b>3</b>
+					课时管理
+					</a>
+				</li>
+			</ul>
+			<!-- 课程图片 -->
+			<div class="content">
+				<!-- 标题 -->
+				<div class="title">
+					<h5>课程图片 <small>COURSE PICTURE</small></h5>
+				</div>
+				<!-- 上传图片 -->
+				<div class="picture col-md-offset-2">
+					<div class="preview">
+						<img src="/static/course.png" alt="">
+					</div>
+					<p class="tips">
+						你可以上传jpg, gif, png格式的文件, 图片建议尺寸至少为300x150。文件大小不能超过2M。
+					</p>
+					<a href="/course/lesson" class="btn btn-success">选择图片</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{{/block}}

@@ -1,0 +1,11 @@
+{{extend ('../layout')}}
+
+{{#block ('body')}}
+	<div class="body">
+		<!-- 面包屑 -->
+		<ol class="breadcrumb">
+			<li><a href="javascript:;">系统设置</a></li>
+			<li class="active">用户管理</li>
+		</ol>
+	</div>
+{{/block}}
