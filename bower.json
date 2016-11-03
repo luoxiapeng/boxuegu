@@ -1,0 +1,22 @@
+{
+  "name": "study",
+  "description": "web project developed by express",
+  "main": "index.js",
+  "authors": [
+    "zhaoyc"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "less": "^2.7.1"
+  }
+}
