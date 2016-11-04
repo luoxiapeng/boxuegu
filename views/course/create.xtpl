@@ -19,7 +19,7 @@
 					</div>
 				</div>
 				<div class="col-md-11">
-					<a href="/course/basic" class="btn btn-success pull-right">创建课程</a>
+					<a href="/course/create/basic" class="btn btn-success pull-right">创建课程</a>
 				</div>
 			</form>
 			<div class="extra col-md-3">

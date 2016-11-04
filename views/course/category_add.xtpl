@@ -7,7 +7,7 @@
 			<li><a href="javascript:;">课程管理</a></li>
 			<li class="active">课程分类</li>
 		</ol>
-		<div class="category_add">
+		<div class="category-add">
 			<form action="" class="form-horizontal">
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">名称</label>

@@ -22,19 +22,19 @@
 			<!-- 步聚 -->
 			<ul class="forwards list-unstyled">
 				<li>
-					<a href="/course/basic" class="done">
+					<a href="/course/create/basic" class="done">
 					<b class="fa fa-check"></b>
 					基本信息
 					</a>
 				</li>
 				<li>
-					<a href="/course/picture" class="active">
+					<a href="/course/create/picture" class="active">
 					<b>2</b>
 					课程图片
 					</a>
 				</li>
 				<li>
-					<a href="/course/lesson">
+					<a href="/course/create/lesson">
 					<b>3</b>
 					课时管理
 					</a>
@@ -54,7 +54,7 @@
 					<p class="tips">
 						你可以上传jpg, gif, png格式的文件, 图片建议尺寸至少为300x150。文件大小不能超过2M。
 					</p>
-					<a href="/course/lesson" class="btn btn-success">选择图片</a>
+					<a href="/course/create/lesson" class="btn btn-success">选择图片</a>
 				</div>
 			</div>
 		</div>
