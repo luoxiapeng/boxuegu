@@ -5,15 +5,15 @@ router.get('/create', function (req, res) {
 	res.render('course/create', {});
 });
 
-router.get('/basic', function (req, res) {
+router.get('/create/basic', function (req, res) {
 	res.render('course/basic', {});
 });
 
-router.get('/picture', function (req, res) {
+router.get('/create/picture', function (req, res) {
 	res.render('course/picture', {});
 });
 
-router.get('/lesson', function (req, res) {
+router.get('/create/lesson', function (req, res) {
 	res.render('course/lesson', {});
 });
 

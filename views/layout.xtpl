@@ -25,7 +25,7 @@
 		<div class="navs">
 			<ul class="list-unstyled">
 				<li>
-					<a href="/" class="active">
+					<a href="/">
 						<i class="fa fa-home"></i>
 						仪表盘
 					</a>
@@ -135,8 +135,23 @@
 	<script src="/static/jquery/dist/jquery.min.js"></script>
 	<script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script>
+		// 折叠效果
 		$('.navs ul').prev('a').on('click', function () {
 			$(this).next().slideToggle();
+		});
+		// 选中状态
+		$('.navs a').each(function () {
+			var _this = $(this),
+				pathname = location.pathname,
+				href = _this.attr('href').slice(1);
+			console.log(href, pathname.lastIndexOf(href))
+			if(pathname.lastIndexOf(href) == 1) {
+
+				_this.addClass('active');
+				_this.closest('ul').show();
+
+				// return false;
+			}
 		});
 	</script>
 </body>

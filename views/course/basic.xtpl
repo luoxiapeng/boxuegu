@@ -22,19 +22,19 @@
 			<!-- 步聚 -->
 			<ul class="forwards list-unstyled">
 				<li>
-					<a href="/course/basic" class="active">
+					<a href="/course/create/basic" class="active">
 					<b>1</b>
 					基本信息
 					</a>
 				</li>
 				<li>
-					<a href="/course/picture">
+					<a href="/course/create/picture">
 					<b>2</b>
 					课程图片
 					</a>
 				</li>
 				<li>
-					<a href="/course/lesson">
+					<a href="/course/create/lesson">
 					<b>3</b>
 					课时管理
 					</a>
@@ -89,7 +89,7 @@
 					</div>
 					<div class="form-group">
 						<div class="col-md-10">
-							<a href="/course/picture" class="btn btn-success pull-right">保存</a>
+							<a href="/course/create/picture" class="btn btn-success pull-right">保存</a>
 						</div>							
 					</div>
 				</form>

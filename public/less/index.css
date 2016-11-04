@@ -31,6 +31,7 @@ a:focus {
 }
 .aside .profile .avatar {
   width: 80px;
+  height: 80px;
   margin: 0 auto;
   overflow: hidden;
   border: 3px solid rgba(255, 255, 255, 0.3);
@@ -502,7 +503,7 @@ a:focus {
   background-color: #FFF;
   border-radius: 4px;
 }
-.main .banner .banner-add {
+.main .advert .advert-add {
   padding: 40px 0 20px;
   background-color: #FFF;
 }
