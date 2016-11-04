@@ -14,8 +14,9 @@ app.use('/static', express.static('public'));
 app.use('/static', express.static('uploads'));
 app.use('/static', express.static('bower_components'));
 
-// ## 载入全部控制器
+// 自动载入控制器
 var routes = glob.sync('./routes/*.js', {cwd: __dirname});
+
 routes.forEach(function (item) {
 	var route = require(item);
 

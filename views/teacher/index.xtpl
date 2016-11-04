@@ -1,0 +1,41 @@
+{{extend ('../layout')}}
+
+{{#block ('body')}}
+	<!-- 讲师列表 -->
+	<div class="body teacher-list">
+		<!-- 面包屑 -->
+		<ol class="breadcrumb">
+			<li><a href="javascript:;">讲师管理</a></li>
+			<li class="active">讲师列表</li>
+		</ol>
+		<div class="page-title">
+			<a href="/teacher/add" class="btn btn-success btn-sm pull-right">添加讲师</a>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<form action="" class="form-inline">
+					<select name="" class="form-control input-sm">
+						<option value="">按年龄</option>
+					</select>
+					<select name="" class="form-control input-sm">
+						<option value="">按性别</option>
+					</select>
+					<select name="" class="form-control input-sm">
+						<option value="">按地区</option>
+					</select>
+					<select name="" class="form-control input-sm">
+						<option value="">按日期</option>
+					</select>
+					<button class="btn btn-success btn-sm">筛选</button>
+					<div class="input-group pull-right">
+						<input type="text" class="form-control input-sm">
+						<span class="input-group-btn">
+							<button class="btn btn-success btn-sm">搜索</button>
+						</span>
+					</div>
+				</form>
+			</div>
+			<!-- code here -->
+		</div>
+	</div>
+{{/block}}
