@@ -22,8 +22,6 @@ router.post('/add', function (req, res) {
 	// 未验证
 	var body = req.body;
 
-	
-
 	// 
 	teacher.add(body, function (err) {
 

@@ -8,49 +8,75 @@
 			<li class="active">课程分类</li>
 		</ol>
 		<div class="category-add">
-			<form action="" class="form-horizontal">
+			<form class="form-horizontal">
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">名称</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control input-sm" placeholder="填写分类名称">
+						<input type="text" name="cat_name" class="form-control input-sm" placeholder="填写分类名称">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">级别</label>
 					<div class="col-md-2">
-						<select name="" class="form-control input-sm">
-							<option value="">顶级分类</option>
-							<option value="">前端开发</option>
-							<option value="">后端开发</option>
-							<option value="">数据库</option>
-							<option value="">云计算&大数据</option>
-							<option value="">视觉设计</option>
+						<select name="cat_pid" class="form-control input-sm">
+							<option value="0">顶级分类</option>
+							{{#each (rows)}}
+								<option value="{{this.cat_id}}">{{this.cat_name}}</option>
+							{{/each}}
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">排序</label>
 					<div class="col-md-1">
-						<input type="text" class="form-control input-sm" value="10">
+						<input type="text" name="cat_order" class="form-control input-sm" value="10">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">是否显示</label>
 					<div class="col-md-5">
-						<label class="checkbox-inline">
-							<input type="checkbox" checked> 是
+						<label class="radio-inline">
+							<input type="radio" name="cat_ishide" value="0" checked> 是
 						</label>
-						<label class="checkbox-inline">
-							<input type="checkbox"> 否
+						<label class="radio-inline">
+							<input type="radio" name="cat_ishide" value="1"> 否
 						</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-8">
-						<a href="/course/category" class="btn btn-success btn-sm pull-right">保存</a>
+						<a href="javascript:;" class="btn btn-success btn-sm pull-right">保存</a>
 					</div>							
 				</div>
 			</form>
 		</div>
 	</div>
 {{/block}}
+
+{{#block ('script')}}
+
+	<script>
+		
+		$('.category-add .btn').on('click', function () {
+			var _this = $(this);
+
+			$.ajax({
+				url: '/course/category/add',
+				type: 'post',
+				data: _this.parents('form').serialize(),
+				success: function (data) {
+					console.log(data);
+				}
+			});
+		});
+
+	</script>
+
+{{/block}}
+
+
+
+
+
+
+
