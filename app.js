@@ -17,7 +17,9 @@ app.use('/static', express.static('uploads'));
 app.use('/static', express.static('bower_components'));
 
 // 解析请求主体(FormData)
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// 
 
 // 自动载入控制器
 var routes = glob.sync('./routes/*.js', {cwd: __dirname});

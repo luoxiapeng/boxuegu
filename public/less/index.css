@@ -514,6 +514,39 @@ a:focus {
   padding: 40px 0 20px;
   background-color: #FFF;
 }
+.login {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #2f4050;
+}
+.login .login-wrap {
+  width: 500px;
+  height: 340px;
+  padding-top: 85px;
+  margin: 180px auto;
+  background-color: #FFF;
+  position: relative;
+}
+.login .login-wrap .input-group {
+  margin: 20px 0;
+}
+.login .login-wrap .fa {
+  width: 18px;
+  font-size: 20px;
+}
+.login .login-wrap .avatar {
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  width: 140px;
+  height: 140px;
+  border: 10px solid #FFF;
+  margin-left: -70px;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px #CCC;
+  background-color: pink;
+}
 #lesson label {
   color: #666;
   font-weight: normal;

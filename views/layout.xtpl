@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>后台管理系统</title>
+	<title>学IT - 后台管理系统</title>
 	<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
