@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "glob": "^7.1.1",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.3.0"
   }

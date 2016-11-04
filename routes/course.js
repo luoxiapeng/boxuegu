@@ -1,6 +1,9 @@
 
 var router = require('express').Router();
 
+// 路径前缀
+router.prefix = '/course';
+
 router.get('/create', function (req, res) {
 	res.render('course/create', {});
 });

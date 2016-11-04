@@ -1,6 +1,8 @@
 
 var express = require('express');
 
+var glob = require('glob');
+
 var app = express();
 
 // 设置模板引擎
@@ -12,14 +14,14 @@ app.use('/static', express.static('public'));
 app.use('/static', express.static('uploads'));
 app.use('/static', express.static('bower_components'));
 
-var dashboard = require('./routes/dashboard');
-var users = require('./routes/users');
-var course = require('./routes/course');
-var advert = require('./routes/advert');
+// ## 载入全部控制器
+var routes = glob.sync('./routes/*.js', {cwd: __dirname});
+routes.forEach(function (item) {
+	var route = require(item);
 
-app.use('/', dashboard);
-app.use('/users', users);
-app.use('/course', course);
-app.use('/advert', advert);
+	typeof route === 'function' && app.use(route.prefix, route);
+});
 
 app.listen(3000);
+
+
