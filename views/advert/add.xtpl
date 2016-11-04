@@ -12,13 +12,13 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">名称</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control" placeholder="填写广告名称">
+						<input type="text" class="form-control input-sm" placeholder="填写广告名称">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">类型</label>
 					<div class="col-md-2">
-						<select name="" class="form-control">
+						<select name="" class="form-control input-sm">
 							<option value="">顶级分类</option>
 							<option value="">前端开发</option>
 							<option value="">后端开发</option>
@@ -31,13 +31,13 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">广告链接</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control" placeholder="填写广告链接">
+						<input type="text" class="form-control input-sm" placeholder="填写广告链接">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">排序</label>
 					<div class="col-md-1">
-						<input type="text" class="form-control" value="10">
+						<input type="text" class="form-control input-sm" value="10">
 					</div>
 				</div>
 				<div class="form-group">
@@ -53,7 +53,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-8">
-						<a href="/advert" class="btn btn-success pull-right">保存</a>
+						<a href="/advert" class="btn btn-sm btn-success pull-right">保存</a>
 					</div>							
 				</div>
 			</form>

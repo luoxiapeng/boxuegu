@@ -12,23 +12,23 @@
 			<!-- 搜索 -->
 			<div class="search">
 				<form action="" class="form-inline">
-					<select name="" class="form-control">
+					<select name="" class="form-control input-sm">
 						<option value="">按年龄</option>
 					</select>
-					<select name="" class="form-control">
+					<select name="" class="form-control input-sm">
 						<option value="">按性别</option>
 					</select>
-					<select name="" class="form-control">
+					<select name="" class="form-control input-sm">
 						<option value="">按地区</option>
 					</select>
-					<select name="" class="form-control">
+					<select name="" class="form-control input-sm">
 						<option value="">按日期</option>
 					</select>
-					<button class="btn btn-success">筛选</button>
+					<button class="btn btn-success btn-sm">筛选</button>
 					<div class="input-group pull-right">
-						<input type="text" class="form-control">
+						<input type="text" class="form-control input-sm">
 						<span class="input-group-btn">
-							<button class="btn btn-success">搜索</button>
+							<button class="btn btn-success btn-sm">搜索</button>
 						</span>
 					</div>
 				</form>

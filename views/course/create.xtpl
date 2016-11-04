@@ -15,11 +15,11 @@
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">课程标题</label>
 					<div class="col-md-9">
-						<input type="text" class="form-control" placeholder="请填写课程标题">
+						<input type="text" class="form-control input-sm" placeholder="请填写课程标题">
 					</div>
 				</div>
 				<div class="col-md-11">
-					<a href="/course/create/basic" class="btn btn-success pull-right">创建课程</a>
+					<a href="/course/create/basic" class="btn btn-success btn-sm pull-right">创建课程</a>
 				</div>
 			</form>
 			<div class="extra col-md-3">
