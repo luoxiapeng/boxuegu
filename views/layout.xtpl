@@ -5,6 +5,7 @@
 	<title>后台管理系统</title>
 	<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
 
 	<link rel="stylesheet" href="/static/less/index.css">
 	<!-- <script src="/static/less/dist/less.min.js"></script> -->
@@ -34,6 +35,12 @@
 					<a href="/users">
 						<i class="fa fa-bell"></i>
 						用户管理
+					</a>
+				</li>
+				<li>
+					<a href="/teacher">
+						<i class="fa fa-bell"></i>
+						讲师管理
 					</a>
 				</li>
 				<li>
@@ -131,28 +138,38 @@
 	</div>
 	<!-- 组件 -->
 	{{{block ('widget')}}}
-
 	<script src="/static/jquery/dist/jquery.min.js"></script>
 	<script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/static/nprogress/nprogress.js"></script>
 	<script>
 		// 折叠效果
 		$('.navs ul').prev('a').on('click', function () {
 			$(this).next().slideToggle();
 		});
+
 		// 选中状态
 		$('.navs a').each(function () {
 			var _this = $(this),
 				pathname = location.pathname,
 				href = _this.attr('href').slice(1);
-			console.log(href, pathname.lastIndexOf(href))
+
 			if(pathname.lastIndexOf(href) == 1) {
 
 				_this.addClass('active');
 				_this.closest('ul').show();
 
-				// return false;
+				return false;
 			}
 		});
+
+		// Ajax进度条
+		$(document).ajaxStart(function () {
+			NProgress.start();
+		}).ajaxStop(function () {
+			NProgress.done();
+		});
+
 	</script>
+	{{{block ('script')}}}
 </body>
 </html>
