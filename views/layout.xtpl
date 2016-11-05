@@ -7,8 +7,8 @@
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
 
-	<link rel="stylesheet" href="/static/less/index.css">
-	<!-- <script src="/static/less/dist/less.min.js"></script> -->
+	<link rel="stylesheet/less" href="/static/less/index.less">
+	<script src="/static/less/dist/less.min.js"></script>
 </head>
 <body>
 	
@@ -119,7 +119,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="javascript:;">
+							<a href="/logout">
 								<i class="fa fa-sign-out"></i>
 								退出
 							</a>

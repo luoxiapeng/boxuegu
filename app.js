@@ -5,6 +5,8 @@ var glob = require('glob');
 
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+
 var app = express();
 
 // 设置模板引擎
@@ -19,11 +21,25 @@ app.use('/static', express.static('bower_components'));
 // 解析请求主体(FormData)
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// 
+// session
+app.use(session({
+	secret: 'studyit',
+	cookie: {maxAge: 60000}
+}));
+
+// 登录验证
+app.use(function (req, res, next) {
+	var url = req.originalUrl;
+	
+	if(url != '/login' && !req.session.loginfo) {
+		res.redirect('/login');
+	}
+
+	next();
+});
 
 // 自动载入控制器
 var routes = glob.sync('./routes/*.js', {cwd: __dirname});
-
 routes.forEach(function (item) {
 	var route = require(item);
 
