@@ -53,7 +53,7 @@ router.post('/category/add', function (req, res, next) {
 	// 未校验
 	var body = req.body;
 
-	course.add(body, function (err, rows) {
+	course.add(body, function (err, result) {
 		if(err) next(err);
 
 		res.json({

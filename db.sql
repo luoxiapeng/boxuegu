@@ -4,8 +4,9 @@ DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE `teacher` (
   `tr_id` int(11) NOT NULL AUTO_INCREMENT,
   `tr_name` varchar(10) NOT NULL DEFAULT '' COMMENT '讲师姓名',
-  `tr_pass` char(32) NOT NULL DEFAULT '''''',
-  `tr_avatar` varchar(255) NOT NULL DEFAULT '',
+  `tr_nickname` varchar(10) NOT NULL DEFAULT '' COMMENT '讲师昵称',
+  `tr_pass` char(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `tr_avatar` varchar(255) NOT NULL DEFAULT '' COMMENT '讲师头像',
   `tr_gender` tinyint(2) NOT NULL DEFAULT '0' COMMENT '性别',
   `tr_cellphone` char(11) NOT NULL DEFAULT '0' COMMENT '手机号码',
   `tr_email` varchar(30) NOT NULL DEFAULT '' COMMENT '电子邮箱',
