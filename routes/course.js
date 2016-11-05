@@ -1,7 +1,7 @@
 
 var router = require('express').Router();
 
-var course = require('../models/course');
+var category = require('../models/category');
 
 // 路径前缀
 router.prefix = '/course';
@@ -33,27 +33,32 @@ router.get('/list', function (req, res) {
 
 // 课程分类
 router.get('/category', function (req, res) {
-	res.render('course/category', {});
+
+	category.show(function (err, result) {
+		if(err) return;
+
+		res.render('course/category', {categorys: result});
+	});
 });
 
-// 添加课程
+// 添加分类页面
 router.get('/category/add', function (req, res, next) {
 
 	// 查询课程分类
-
-	course.getTop(function (err, rows) {
+	category.getTop(function (err, result) {
 		if(err) next(err);
 
-		res.render('course/category_add', {rows: rows});
+		res.render('course/category_add', {categorys: result});
 
 	});
 });
 
+// 添加分类
 router.post('/category/add', function (req, res, next) {
 	// 未校验
 	var body = req.body;
 
-	course.add(body, function (err, result) {
+	category.add(body, function (err, result) {
 		if(err) next(err);
 
 		res.json({
