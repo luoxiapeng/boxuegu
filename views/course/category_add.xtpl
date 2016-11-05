@@ -20,7 +20,7 @@
 					<div class="col-md-2">
 						<select name="cat_pid" class="form-control input-sm">
 							<option value="0">顶级分类</option>
-							{{#each (rows)}}
+							{{#each (categorys)}}
 								<option value="{{this.cat_id}}">{{this.cat_name}}</option>
 							{{/each}}
 						</select>

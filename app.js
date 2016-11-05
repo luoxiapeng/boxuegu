@@ -24,13 +24,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // session
 app.use(session({
 	secret: 'studyit',
-	cookie: {maxAge: 60000}
+	resave: false,
+	saveUninitialized: true,
+	cookie: {maxAge: null}
 }));
 
 // 登录验证
 app.use(function (req, res, next) {
 	var url = req.originalUrl;
-	
+
 	if(url != '/login' && !req.session.loginfo) {
 		res.redirect('/login');
 	}
