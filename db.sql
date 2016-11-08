@@ -16,7 +16,7 @@ CREATE TABLE `teacher` (
   PRIMARY KEY (`tr_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='讲师表';
 
--- 课程分类
+-- 课程分类表
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `cat_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -28,6 +28,9 @@ CREATE TABLE `category` (
   `cat_update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后修改时间',
   PRIMARY KEY (`cat_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='分类列';
+
+-- 课程表
+
 
 
 
