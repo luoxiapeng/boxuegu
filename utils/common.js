@@ -1,12 +1,33 @@
 
-exports.tree = function (arr) {
-	var tree = [];
+exports.getTree = getTree;
 
-	function getTree(arr, pid) {
-		forEach(arr, function (key, val) {
-			if(val['pid'] == pid) {
-				tree.push(val);
+function getTree(arr, pid, c) {
+
+	var temp = [];
+
+	(function () {
+		for(var i=0; i<arr.length; i++) {
+
+			if(arr[i]['cat_pid'] == pid) {
+
+				// 添加子节点
+				arr[i].childs = [];
+
+				if(c) {
+					c.push(arr[i]);
+					continue;
+				}
+
+				temp.push(arr[i]);
+
+				getTree(arr, arr[i]['cat_id'], arr[i].childs);
 			}
-		});
-	}
+		}
+	})();
+
+	return temp;
 }
+
+
+
+

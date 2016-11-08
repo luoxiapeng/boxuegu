@@ -30,15 +30,15 @@ app.use(session({
 }));
 
 // 登录验证
-app.use(function (req, res, next) {
-	var url = req.originalUrl;
+// app.use(function (req, res, next) {
+// 	var url = req.originalUrl;
 
-	if(url != '/login' && !req.session.loginfo) {
-		res.redirect('/login');
-	}
+// 	if(url != '/login' && !req.session.loginfo) {
+// 		res.redirect('/login');
+// 	}
 
-	next();
-});
+// 	next();
+// });
 
 // 自动载入控制器
 var routes = glob.sync('./routes/*.js', {cwd: __dirname});

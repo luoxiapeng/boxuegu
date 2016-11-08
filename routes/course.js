@@ -3,6 +3,8 @@ var router = require('express').Router();
 
 var category = require('../models/category');
 
+var common = require('../utils/common');
+
 // 路径前缀
 router.prefix = '/course';
 
@@ -31,13 +33,15 @@ router.get('/list', function (req, res) {
 	res.render('course/list', {});
 });
 
-// 课程分类
+// 所有课程分类
 router.get('/category', function (req, res) {
-
+	// 
 	category.show(function (err, result) {
 		if(err) return;
 
-		res.render('course/category', {categorys: result});
+		var categorys = common.getTree(result, 0);
+
+		res.render('course/category_list', {categorys: categorys});
 	});
 });
 
@@ -48,23 +52,44 @@ router.get('/category/add', function (req, res, next) {
 	category.getTop(function (err, result) {
 		if(err) next(err);
 
-		res.render('course/category_add', {categorys: result});
+		res.render('course/category', {topCategory: result});
 
 	});
 });
 
 // 添加分类
-router.post('/category/add', function (req, res, next) {
+router.post('/category/update', function (req, res, next) {
 	// 未校验
 	var body = req.body;
 
-	category.add(body, function (err, result) {
+	category.update(body, function (err, result) {
 		if(err) next(err);
 
 		res.json({
 			code: 10000,
 			msg: '添加成功！'
 		});
+	});
+
+});
+
+// 编辑分类
+router.get('/category/edit/:cat_id', function (req, res) {
+
+	var cat_id = req.params.cat_id;
+
+	// 获取顶级分类
+	category.getTop(function (err, result) {
+		if(err) next(err);
+
+		var topCategory = result;
+
+		// 获取分类信息
+		category.find(cat_id, function (err, result) {
+
+			res.render('course/category', {category: result[0], topCategory: topCategory});
+		});
+
 	});
 
 });
