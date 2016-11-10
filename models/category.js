@@ -6,7 +6,7 @@ var fs = require('fs');
 // 获取顶级分类
 exports.getTop = function (cb) {
 
-	var query = 'SELECT cat_id, cat_name FROM category WHERE cat_pid=0';
+	var query = 'SELECT cg_id, cg_name FROM category WHERE cg_pid=0';
 
 	db.query(query, cb);
 
@@ -16,11 +16,11 @@ exports.getTop = function (cb) {
 exports.update = function (body, cb) {
 
 	var query = '';
-	if(Number(body.cat_id)) {
-		query = 'UPDATE `category` SET ? WHERE `cat_id` = ' + body.cat_id;
+	if(Number(body.cg_id)) {
+		query = 'UPDATE `category` SET ? WHERE `cg_id` = ' + body.cg_id;
 	} else {
 
-		delete body.cat_id;
+		delete body.cg_id;
 		query = 'INSERT INTO category SET ?';
 	}
 
@@ -37,11 +37,11 @@ exports.show = function (cb) {
 }
 
 // 查询分类信息
-exports.find = function (cat_id, cb) {
+exports.find = function (cg_id, cb) {
 
-	var query = 'SELECT * FROM `category` WHERE `cat_id` = ?'; 
+	var query = 'SELECT * FROM `category` WHERE `cg_id` = ?'; 
 
-	db.query(query, [cat_id], cb);
+	db.query(query, [cg_id], cb);
 }
 
 

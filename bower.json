@@ -18,6 +18,8 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "less": "^2.7.1",
-    "nprogress": "^0.2.0"
+    "nprogress": "^0.2.0",
+    "jquery-form": "^3.46.0",
+    "uploadify": "^3.2.1"
   }
 }

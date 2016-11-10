@@ -8,7 +8,7 @@ function getTree(arr, pid, c) {
 	(function () {
 		for(var i=0; i<arr.length; i++) {
 
-			if(arr[i]['cat_pid'] == pid) {
+			if(arr[i]['cg_pid'] == pid) {
 
 				// 添加子节点
 				arr[i].childs = [];
@@ -20,7 +20,7 @@ function getTree(arr, pid, c) {
 
 				temp.push(arr[i]);
 
-				getTree(arr, arr[i]['cat_id'], arr[i].childs);
+				getTree(arr, arr[i]['cg_id'], arr[i].childs);
 			}
 		}
 	})();

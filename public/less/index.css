@@ -272,6 +272,7 @@ a:focus {
   width: 240px;
   height: 120px;
   float: left;
+  position: relative;
 }
 .main .course-add .brief .info {
   height: 100px;
@@ -400,13 +401,15 @@ a:focus {
 }
 .main .course-add .picture {
   padding: 20px 0;
+  overflow: hidden;
 }
 .main .course-add .picture .preview {
-  width: 300px;
+  width: 400px;
+  min-height: 200px;
 }
 .main .course-add .picture .tips {
-  margin: 30px 0 20px;
-  width: 300px;
+  margin: 20px 0;
+  width: 400px;
   color: #666;
 }
 .main .course-add .lessons {
