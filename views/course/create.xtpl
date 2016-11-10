@@ -11,15 +11,15 @@
 			<div class="title">
 				<h5>创建课程 <small>CREATE A COURSE</small></h5>
 			</div>
-			<form action="" class="form-horizontal col-md-7">
+			<form class="form-horizontal col-md-7" id="createCourse">
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">课程标题</label>
 					<div class="col-md-9">
-						<input type="text" class="form-control input-sm" placeholder="请填写课程标题">
+						<input type="text" name="cs_name" class="form-control input-sm" placeholder="请填写课程标题">
 					</div>
 				</div>
 				<div class="col-md-11">
-					<a href="/course/create/basic" class="btn btn-success btn-sm pull-right">创建课程</a>
+					<button type="submit" class="btn btn-success btn-sm pull-right">创建课程</button>
 				</div>
 			</form>
 			<div class="extra col-md-3">
@@ -29,3 +29,29 @@
 		</div>
 	</div>
 {{/block}}
+
+{{#block ('script')}}
+	
+	<script>
+		
+		$('#createCourse').on('submit', function () {
+			$(this).ajaxSubmit({
+				url: '/course/create',
+				type: 'post',
+				success: function (data) {
+					// console.log(data)
+					if(data.code == 10000) {
+						location.href = 'create/basic/' + data.result.id;
+					}
+				}
+			});
+
+			return false;
+		});
+
+
+
+	</script>
+
+{{/block}}
+

@@ -12,17 +12,17 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">名称</label>
 					<div class="col-md-5">
-						<input type="text" name="cat_name" class="form-control input-sm" value="{{category.cat_name}}" placeholder="填写分类名称">
+						<input type="text" name="cg_name" class="form-control input-sm" value="{{category.cg_name}}" placeholder="填写分类名称">
 					</div>
-					<input type="hidden" name="cat_id" value="{{category.cat_id}}">
+					<input type="hidden" name="cg_id" value="{{category.cg_id}}">
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">级别</label>
 					<div class="col-md-2">
-						<select name="cat_pid" class="form-control input-sm">
+						<select name="cg_pid" class="form-control input-sm">
 							<option value="0">顶级分类</option>
 							{{#each (topCategory)}}
-								<option {{#if (this.cat_id === category.cat_pid)}}selected{{/if}} value="{{this.cat_id}}">{{this.cat_name}}</option>
+								<option {{#if (this.cg_id === category.cg_pid)}}selected{{/if}} value="{{this.cg_id}}">{{this.cg_name}}</option>
 							{{/each}}
 						</select>
 					</div>
@@ -30,17 +30,17 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">排序</label>
 					<div class="col-md-1">
-						<input type="text" name="cat_order" class="form-control input-sm" value="{{category.cat_order}}">
+						<input type="text" name="cg_order" class="form-control input-sm" value="{{category.cg_order}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">是否显示</label>
 					<div class="col-md-5">
 						<label class="radio-inline">
-							<input type="radio" {{#if (category.cat_ishide === 0)}} checked {{/if}} name="cat_ishide" value="0"> 是
+							<input type="radio" {{#if (category.cg_ishide === 0)}} checked {{/if}} name="cg_ishide" value="0"> 是
 						</label>
 						<label class="radio-inline">
-							<input type="radio" {{#if (category.cat_ishide === 1)}} checked {{/if}} name="cat_ishide" value="1"> 否
+							<input type="radio" {{#if (category.cg_ishide === 1)}} checked {{/if}} name="cg_ishide" value="1"> 否
 						</label>
 					</div>
 				</div>

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
+	<link rel="stylesheet" href="/static/Jcrop/css/Jcrop.css">
 
 	<link rel="stylesheet" href="/static/less/index.css">
 	<!-- <script src="/static/less/dist/less.min.js"></script> -->
@@ -140,7 +141,11 @@
 	{{{block ('widget')}}}
 	<script src="/static/jquery/dist/jquery.min.js"></script>
 	<script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/static/ckeditor/ckeditor.js"></script>
+	<script src="/static/uploadify/jquery.uploadify.js"></script>
+	<script src="/static/Jcrop/js/Jcrop.js"></script>
 	<script src="/static/nprogress/nprogress.js"></script>
+	<script src="/static/jquery-form/jquery.form.js"></script>
 	<script>
 		// 折叠效果
 		$('.navs ul').prev('a').on('click', function () {
@@ -156,7 +161,6 @@
 			if(pathname.lastIndexOf(href) == 1) {
 
 				_this.addClass('active');
-				console.log(_this.closest('ul'))
 				_this.closest('ul').show();
 
 				return false;
