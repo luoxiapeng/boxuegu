@@ -1,6 +1,8 @@
 
 var db = require('../config/db');
 
+var crop = require('../utils/crop');
+
 exports.create = function (body, cb) {
 	var query = 'INSERT INTO `course` SET ?';
 
@@ -13,7 +15,7 @@ exports.create = function (body, cb) {
 }
 
 exports.find = function (cs_id, cb) {
-	var query = 'SELECT `cs_id`, `cs_name`, `cs_cover` FROM `course` WHERE `cs_id` = ?'
+	var query = 'SELECT * FROM `course` WHERE `cs_id` = ?'
 
 	db.query(query, [cs_id], cb);
 }
@@ -24,6 +26,31 @@ exports.update = function (body, cb) {
 
 	delete body.cs_id;
 	db.query(query, body, cb);
+}
+
+// 裁切另存图片
+exports.resize = function (body, cb) {
+
+	crop.resize(body.x, body.y, body.w, body.h, body.cs_cover_original, function (err, path) {
+		if(err) return;
+
+		var query = 'UPDATE `course` SET `cs_cover` = ? WHERE `cs_id` = ?';
+
+		db.query(query, [path, body.cs_id], function (err, rows) {
+			if(err) return;
+
+			cb(err, rows);
+		});
+	});
+}
+
+// 课程列表
+exports.list = function (body, cb) {
+
+	var query = 'SELECT * FROM `course`';
+
+	db.query(query, cb);
+
 }
 
 

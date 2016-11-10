@@ -16,6 +16,12 @@ exports.add = function (body, cb) {
 	});
 }
 
+exports.find = function (tc_id, cb) {
+	var query = 'SELECT * FROM `teacher` WHERE `tc_id` = ?';
+
+	db.query(query, [tc_id], cb);
+}
+
 exports.show = function (cb) {
 	var query = 'SELECT * FROM `teacher`';
 

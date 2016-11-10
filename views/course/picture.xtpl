@@ -11,29 +11,31 @@
 			<!-- 摘要 -->
 			<div class="brief">
 				<div class="thumb">
-				</div>
+                    {{#if (course.cs_cover)}}
+                    <img src="/static/thumbs/{{course.cs_cover}}" alt="">            
+                    {{/if}}
+                </div>
 				<dl class="info">
-					<dt>{{cs_name}}</dt>
-					<dd>讲师：李鹏周</dd>
-					<!-- <dd>课时：32</dd> -->
+					<dt>{{course.cs_name}}</dt>
+					<dd>讲师：{{teacher.tc_name}}</dd>
 				</dl>
 			</div>
 			<!-- 步聚 -->
 			<ul class="forwards list-unstyled">
 				<li>
-					<a href="/course/create/basic/{{cs_id}}" class="done">
+					<a href="/course/create/basic/{{course.cs_id}}" class="done">
 					<b class="fa fa-check"></b>
 					基本信息
 					</a>
 				</li>
 				<li>
-					<a href="/course/create/picture/{{cs_id}}" class="active">
+					<a href="/course/create/picture/{{course.cs_id}}" class="active">
 					<b>2</b>
 					课程图片
 					</a>
 				</li>
 				<li>
-					<a href="/course/create/lesson/{{cs_id}}">
+					<a href="/course/create/lesson/{{course.cs_id}}">
 					<b>3</b>
 					课时管理
 					</a>
@@ -48,10 +50,10 @@
 				<!-- 上传图片 -->
 				<div class="picture col-md-offset-2">
 					<div class="preview">
-						{{#if (cs_cover)}}
-						<img src="/static/{{cs_cover}}" alt="">
+						{{#if (course.cs_cover_original)}}
+						<img src="/static/original/{{course.cs_cover_original}}" alt="">
 						{{else}}
-						<img src="/static/course.png" alt="">
+						<img src="/static/images/course.png" alt="">
 						{{/if}}
 					</div>
 					<p class="tips">
@@ -61,16 +63,20 @@
                         <input id="file_upload" type="file">
                     </div>
 					<div class="col-md-2">
-                        <input type="button" value="裁切图片" class="btn btn-warning">
+                        {{#if (course.cs_cover_original)}}
+                        <input type="button" value="裁切图片" id="crop" data-status="crop" class="btn btn-warning">
+                        {{else}}
+                        <input type="button" value="裁切图片" id="crop" disabled class="btn btn-warning">
+                        {{/if}}
                     </div>
                     <!-- 图片参数 -->
-                    <form style="display: none;">
+                    <form style="display: none;" id="coords">
                         <input type="hidden" name="x">
                         <input type="hidden" name="y">
                         <input type="hidden" name="w">
                         <input type="hidden" name="h">
-                        <input type="hidden" name="cs_cover_path" value="{{cs_cover}}">
-                        <input type="hidden" id="csID" value="{{cs_id}}">
+                        <input type="hidden" name="cs_cover_original" value="{{course.cs_cover_original}}">
+                        <input type="hidden" name="cs_id" id="csID" value="{{course.cs_id}}">
                     </form>
 				</div>
 			</div>
@@ -87,7 +93,7 @@
                 jcrop_api;
 
             // 图片裁切
-            function imageJcrop() {
+            function imageCrop() {
 
                 if(jcrop_api) jcrop_api.destroy();
 
@@ -125,13 +131,35 @@
 
             // 获取裁切尺寸
             preview.parent().on('cropmove cropend',function(e, s, c) {
-                $('[name="x"]').value = c.x;
-                $('[name="y"]').value = c.y;
-                $('[name="w"]').value = c.w;
-                $('[name="h"]').value = c.h;
+                $('[name="x"]').val(c.x);
+                $('[name="y"]').val(c.y);
+                $('[name="w"]').val(c.w);
+                $('[name="h"]').val(c.h);
             });
 
-            imageJcrop();
+            // 
+            $('#crop').on('click', function () {
+                var _this = $(this),
+                    status = _this.attr('data-status');
+
+                if(status == 'crop') {
+                    imageCrop();
+                    _this.val('保存图片').attr('data-status', 'save');
+                    return;
+                }
+
+                // 保存
+                $('#coords').ajaxSubmit({
+                    url: '/course/create/crop',
+                    type: 'post',
+                    success: function (data) {
+                        if(data.code == 10000) {
+                            location.href = '/course/create/lesson/' + data.result.cs_id;
+                        }
+                    }
+                });
+
+            });
 
             // 上传预览
             $('#file_upload').uploadify({
@@ -140,7 +168,7 @@
                 width: '82',
                 height: 'auto',
                 buttonText: '上传图片',
-                fileObjName: 'cs_cover',
+                fileObjName: 'cs_cover_original',
                 formData: {cs_id: $('#csID').val()},
                 fileSizeLimit: '2MB',
                 fileTypeExts: '*.jpg; *.gif; *.png',
@@ -152,11 +180,16 @@
                     var data = JSON.parse(data);
 
                     // 预览图片
-                    $('.preview img').attr('src', '/static/' + data.filename);
-                    $('input[name="cs_cover_path"]').val(data.filename);
+                    $('.preview img').attr('src', '/static/original/' + data.filename);
+                    $('input[name="cs_cover_original"]').val(data.filename);
+
+                    // 更改按钮状态
+                    $('#crop').prop('disabled', false)
+                    .val('保存图片')
+                    .attr('data-status', 'save');
 
                     // 裁切
-                    imageJcrop();
+                    imageCrop();
                 }
             });
 

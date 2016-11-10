@@ -9,6 +9,10 @@ var session = require('express-session');
 
 var app = express();
 
+app.set('demo', 'hhh');
+
+app.locals.title = 'express';
+
 // 设置模板引擎
 app.set('views','./views');
 app.set('view engine', 'xtpl');
