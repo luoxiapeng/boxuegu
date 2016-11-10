@@ -20,7 +20,6 @@ router.get('/create', function (req, res) {
 });
 
 router.post('/create', function (req, res) {
-	console.log(req.body);
 
 	var body = req.body;
 
@@ -42,28 +41,51 @@ router.get('/create/basic/:cs_id', function (req, res) {
 
 	var cs_id = req.params.cs_id;
 
+	// 课程信息
 	course.find(cs_id, function (err, result) {
 
 		var data = {};
 
-		data.cs_id = cs_id;
-
 		data.course = result[0];
 
+		// 讲师
 		teacher.show(function (err, result) {
 
 			data.teacher = result;
 
-			res.render('course/basic', data);
+			// 分类
+			category.getParent(data.course.cs_cg_id, function (err, result) {
+
+				var parents = [];
+				var childs = [];
+
+				result.forEach(function (item, key) {
+					if(item.cg_pid == 0) {
+						parents.push(item);
+						return;
+					}
+					childs.push(item);
+				});
+
+				var categorys = {
+					parents: parents,
+					childs: childs
+				}
+
+				data.categorys = categorys;
+
+				res.render('course/basic', data);
+			});
 		});
 	});
 
 });
 
+// 
 router.post('/create/basic', function (req, res) {
 	var cs_id = req.body.cs_id;
+
 	course.update(req.body, function (err, result) {
-		// res.json(result);
 		if(err) return err;
 
 		res.json({
@@ -75,24 +97,73 @@ router.post('/create/basic', function (req, res) {
 
 });
 
+// 获取子分类
+router.post('/create/getChild', function (req, res) {
+
+	category.getChild(req.body.cg_id, function (err, result) {
+
+		if(err) return;
+
+		res.json({
+			code: 10000,
+			msg: '成功啦',
+			result: result
+		});
+
+	});
+});
+
 // 课程图片
 router.get('/create/picture/:cs_id', function (req, res) {
 
 	var cs_id = req.params.cs_id;
+	var data = {};
 
 	course.find(cs_id, function (err, result) {
-		res.render('course/picture', result[0]);
+		var cs_tc_id = result[0].cs_tc_id;
+
+		data.course = result[0];
+
+		teacher.find(cs_tc_id, function (err, result) {
+			data.teacher = result[0];
+			res.render('course/picture', data);
+		});
 	});
 });
 
 // 课程课时
-router.get('/create/lesson', function (req, res) {
-	res.render('course/lesson', {});
+router.get('/create/lesson/:cs_id', function (req, res) {
+
+	var cs_id = req.params.cs_id;
+	var data = {};
+
+	course.find(cs_id, function (err, result) {
+		var cs_tc_id = result[0].cs_tc_id;
+		// 课程信息
+		data.course = result[0];
+
+		teacher.find(cs_tc_id, function (err, result) {
+			// 讲师信息
+			data.teacher = result[0];
+
+			// 还差一个课时信息
+
+			res.render('course/lesson', data);
+		});
+	});
+
 });
 
 // 所有课程
-router.get('/list', function (req, res) {
-	res.render('course/list', {});
+router.get('/list/:p?', function (req, res) {
+
+	var p = req.params.p;
+
+	course.list(p, function (err, result) {
+		res.render('course/list', {courses: result});
+	});
+
+	
 });
 
 // 所有课程分类
@@ -157,10 +228,10 @@ router.get('/category/edit/:cg_id', function (req, res) {
 });
 
 //  图片上传
-router.post('/create/upload', upload.single('cs_cover'), function (req, res) {
+router.post('/create/upload', upload.single('cs_cover_original'), function (req, res) {
 	// console.log(req.body);
 	var body = {
-		cs_cover: req.file.filename,
+		cs_cover_original: req.file.filename,
 		cs_id: req.body.cs_id
 	}
 
@@ -170,6 +241,23 @@ router.post('/create/upload', upload.single('cs_cover'), function (req, res) {
 		res.json(req.file);
 	});
 
+});
+
+// 裁切图片
+router.post('/create/crop', function (req, res) {
+	// console.log(req.body);
+
+	var body = req.body;
+
+	course.resize(body, function (err, result) {
+		if(err) return;
+
+		res.json({
+			code: 10000,
+			msg: '保存成功',
+			result: {cs_id: body.cs_id}
+		});
+	});
 });
 
 module.exports = router;

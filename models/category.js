@@ -12,6 +12,20 @@ exports.getTop = function (cb) {
 
 }
 
+exports.getParent = function (cg_id, cb) {
+
+	var query = 'SELECT * FROM `category` WHERE `category`.`cg_pid`=(SELECT `category`.`cg_pid` FROM `category` WHERE `category`.`cg_id`=?) UNION SELECT * FROM `category` WHERE `category`.`cg_pid`=0';
+
+	db.query(query, [cg_id], cb);
+};
+
+exports.getChild = function(cg_pid, cb) {
+	
+	var query = 'SELECT * FROM `category` WHERE `cg_pid` = ?';
+
+	db.query(query, [cg_pid], cb);
+}
+
 // 添加分类
 exports.update = function (body, cb) {
 

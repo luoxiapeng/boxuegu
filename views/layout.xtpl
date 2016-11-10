@@ -144,6 +144,7 @@
 	<script src="/static/ckeditor/ckeditor.js"></script>
 	<script src="/static/uploadify/jquery.uploadify.js"></script>
 	<script src="/static/Jcrop/js/Jcrop.js"></script>
+	<script src="/static/artTemplate/template-native.js"></script>
 	<script src="/static/nprogress/nprogress.js"></script>
 	<script src="/static/jquery-form/jquery.form.js"></script>
 	<script>

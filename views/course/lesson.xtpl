@@ -11,41 +11,43 @@
 			<!-- 摘要 -->
 			<div class="brief">
 				<div class="thumb">
-					<img src="/static/course_1.jpg" alt="">
+					{{#if (course.cs_cover)}}
+					<img src="/static/thumbs/{{course.cs_cover}}" alt="">
+					{{/if}}
 				</div>
 				<dl class="info">
-					<dt>Git 指南</dt>
-					<dd>讲师：李鹏周</dd>
+					<dt>{{course.cs_name}}</dt>
+					<dd>讲师：{{teacher.tc_name}}</dd>
 					<dd>课时：32</dd>
 				</dl>
 			</div>
 			<!-- 步聚 -->
 			<ul class="forwards list-unstyled">
 				<li>
-					<a href="/course/create/basic" class="done">
+					<a href="/course/create/basic/{{course.cs_id}}" class="done">
 					<b class="fa fa-check"></b>
 					基本信息
 					</a>
 				</li>
 				<li>
-					<a href="/course/create/picture" class="done">
+					<a href="/course/create/picture/{{course.cs_id}}" class="done">
 					<b class="fa fa-check"></b>
 					课程图片
 					</a>
 				</li>
 				<li>
-					<a href="/course/create/lesson" class="active">
+					<a href="/course/create/lesson/{{course.cs_id}}" class="active">
 					<b>3</b>
 					课时管理
 					</a>
 				</li>
 			</ul>
 			<!-- 课时管理 -->
-			<div class="content">
+			<div class="content" id="Lessons">
 				<!-- 标题 -->
 				<div class="title">
 					<h5>课时管理 <small>LESSON MANAGE</small></h5>
-					<a src="javascript:;" data-toggle="modal" data-target="#lesson" class="btn btn-success btn-sm pull-right">
+					<a href="javascript:;" class="btn btn-success btn-sm pull-right add">
 						<i class="fa fa-plus"></i>
 						课时
 					</a>
@@ -59,45 +61,8 @@
 							<span class="duration">12:06</span>
 							<!-- 操作 -->
 							<div class="action pull-right">
-								<a href="javascript::" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-								<a href="javascript::" class="btn btn-info btn-xs">预览</a>
-								<a href="javascript::" class="btn btn-danger btn-xs">删除</a>
-							</div>
-						</li>
-						<li>
-							<i class="fa fa-file-video-o"></i>
-							<span class="order">课时：2</span>
-							<span class="name">Git版本管理</span>
-							<span class="duration">16:07</span>
-							<!-- 操作 -->
-							<div class="action pull-right">
-								<a href="javascript::" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-								<a href="javascript::" class="btn btn-info btn-xs">预览</a>
-								<a href="javascript::" class="btn btn-danger btn-xs">删除</a>
-							</div>
-						</li>
-						<li>
-							<i class="fa fa-file-video-o"></i>
-							<span class="order">课时：3</span>
-							<span class="name">Git协同开发</span>
-							<span class="duration">10:02</span>
-							<!-- 操作 -->
-							<div class="action pull-right">
-								<a href="javascript::" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-								<a href="javascript::" class="btn btn-info btn-xs">预览</a>
-								<a href="javascript::" class="btn btn-danger btn-xs">删除</a>
-							</div>
-						</li>
-						<li>
-							<i class="fa fa-file-video-o"></i>
-							<span class="order">课时：4</span>
-							<span class="name">Git共享仓库</span>
-							<span class="duration">14:28</span>
-							<!-- 操作 -->
-							<div class="action pull-right">
-								<a href="javascript::" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-								<a href="javascript::" class="btn btn-info btn-xs">预览</a>
-								<a href="javascript::" class="btn btn-danger btn-xs">删除</a>
+								<a href="javascript:;" class="btn btn-info btn-xs edit">编辑</a>
+								<a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>
 							</div>
 						</li>
 					</ul>
@@ -109,7 +74,7 @@
 
 {{#block ('widget')}}
 	<!-- 模态框 添加课程 -->
-	<div class="modal fade" id="lesson">
+	<div class="modal fade" id="lessonModal">
 		<div class="modal-dialog" style="width: 800px;">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -118,6 +83,7 @@
 				</div>
 				<div class="modal-body">
 					<form action="" class="form-horizontal">
+						<input type="hidden" name="cs_id" value="{{course.cs_id}}">
 						<div class="form-group">
 							<label for="" class="col-md-2 control-label">标题</label>
 							<div class="col-md-6">
@@ -176,4 +142,36 @@
 		</div>
 	</div>
 {{/block}}
+
+{{#block ('script')}}
+
+	<script>
+		// 视频管理
+		$('#Lessons').on('click', '.btn', function () {
+			var _this = $(this);
+
+			if(_this.is('.delete')) {
+				alert('delete');
+				return;
+			}
+
+			if(_this.is('.add')) {
+
+				$('#lessonModal').modal();
+
+				return;
+			}
+
+			if(_this.is('.edit')) {
+				alert(11);
+			}
+
+		});
+	</script>
+
+{{/block}}
+
+
+
+
 

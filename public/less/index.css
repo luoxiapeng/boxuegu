@@ -6,7 +6,7 @@ body {
 }
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
 }
 a {
   display: inline-block;
@@ -271,6 +271,8 @@ a:focus {
 .main .course-add .brief .thumb {
   width: 240px;
   height: 120px;
+  background-image: url(../images/course.png);
+  background-size: contain;
   float: left;
   position: relative;
 }
@@ -405,7 +407,10 @@ a:focus {
 }
 .main .course-add .picture .preview {
   width: 400px;
-  min-height: 200px;
+  min-height: 160px;
+}
+.main .course-add .picture img {
+  max-width: 100%;
 }
 .main .course-add .picture .tips {
   margin: 20px 0;
@@ -551,14 +556,14 @@ a:focus {
   box-shadow: 0 1px 5px #CCC;
   background-color: pink;
 }
-#lesson label {
+#lessonModal label {
   color: #666;
   font-weight: normal;
 }
-#lesson .help-block {
+#lessonModal .help-block {
   color: #999;
   font-size: 12px;
 }
-#lesson input.small {
+#lessonModal input.small {
   width: 80px;
 }
