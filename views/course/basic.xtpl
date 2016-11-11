@@ -114,7 +114,7 @@
 	</div>
 {{/block}}
 
-{{#block ('widget')}}
+{{#block ('template')}}
 	<script type="text/template" id="tpl">
 		<% for(var i=0; i<categorys.length; i++) { %>
 		<option value="<%= categorys[i].cg_id %>"><%= categorys[i].cg_name %></option>

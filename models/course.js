@@ -47,7 +47,7 @@ exports.resize = function (body, cb) {
 // 课程列表
 exports.list = function (body, cb) {
 
-	var query = 'SELECT * FROM `course`';
+	var query = 'SELECT * FROM `course`, `teacher`, `category` WHERE cs_tc_id = tc_id AND cs_cg_id = cg_id';
 
 	db.query(query, cb);
 

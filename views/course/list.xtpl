@@ -42,8 +42,8 @@
 					<a href="/course/create/basic/{{this.cs_id}}">{{this.cs_name}}</a>
 					<ul class="list-unstyled">
 						<li>
-							<span>讲师：李鹏周</span>
-							<span>类别：前端开发</span>
+							<span>讲师：{{this.tc_name}}</span>
+							<span>类别：{{this.cg_name}}</span>
 						</li>
 						<li>
 							<span>课时：32</span>
@@ -57,15 +57,5 @@
 			</div>
 			{{/each}}
 		</div>
-		<!-- 分页 -->
-		<ul class="pagination pull-right">
-			<li><a href="#">上一页</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">下一页</a></li>
-		</ul>
 	</div>
 {{/block}}

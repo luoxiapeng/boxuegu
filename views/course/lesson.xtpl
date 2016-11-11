@@ -18,7 +18,7 @@
 				<dl class="info">
 					<dt>{{course.cs_name}}</dt>
 					<dd>讲师：{{teacher.tc_name}}</dd>
-					<dd>课时：32</dd>
+					<dd class="total">课时：{{lessons.length}}</dd>
 				</dl>
 			</div>
 			<!-- 步聚 -->
@@ -54,17 +54,19 @@
 				</div>
 				<div class="lessons">
 					<ul class="list-unstyled">
-						<li>
+						{{#each (lessons)}}
+						<li data-id="{{this.ls_id}}">
 							<i class="fa fa-file-video-o"></i>
-							<span class="order">课时：1</span>
-							<span class="name">Git工作原理</span>
-							<span class="duration">12:06</span>
+							<span class="order">课时：{{xindex+1}}</span>
+							<span class="name">{{this.ls_name}}</span>
+							<span class="duration">{{this.ls_video_duration}}</span>
 							<!-- 操作 -->
 							<div class="action pull-right">
 								<a href="javascript:;" class="btn btn-info btn-xs edit">编辑</a>
 								<a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>
 							</div>
 						</li>
+						{{/each}}
 					</ul>
 				</div>
 			</div>
@@ -81,92 +83,191 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">添加课时</h4>
 				</div>
-				<div class="modal-body">
-					<form action="" class="form-horizontal">
-						<input type="hidden" name="cs_id" value="{{course.cs_id}}">
-						<div class="form-group">
-							<label for="" class="col-md-2 control-label">标题</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control input-sm">
-							</div>
-							<div class="col-md-2">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox"> 免费课时
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-md-2 control-label">简介</label>
-							<div class="col-md-8">
-								<textarea name="" rows="5" class="form-control input-sm"></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-md-2 control-label">视频</label>
-							<div class="col-md-8">
-								<div class="input-group">
-									<input type="text" class="form-control input-sm" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入">
-									<span class="input-group-btn">
-										<button class="btn btn-success btn-sm">获取</button>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group form-inline">
-							<label for="" class="col-md-2 control-label">时长</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control input-sm small">
-								分
-								<input type="text" class="form-control input-sm small">
-								秒
-								 <p class="help-block">时长必须为整数。</p>
-							</div>
-						</div>
-						<div class="form-group form-inline">
-							<label for="" class="col-md-2 control-label">建议学习时长</label>
-							<div class="col-md-8">
-								<input type="text" class="form-control input-sm small">
-								小时
-								 <p class="help-block">（如未设置，则默认学习时长为视频时长3倍取整。）</p>
-							</div>
-						</div>
-					</form>
-				</div>
+				<div class="modal-body"></div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-success btn-sm"> 添 加 </button>
+					<button type="button" class="btn btn-success btn-sm save"> 添 加 </button>
 				</div>
 			</div>
 		</div>
 	</div>
 {{/block}}
 
+{{#block ('template')}}
+	<!-- 模板 -->
+	<script type="text/template" id="form">
+		<form class="form-horizontal" data-flag="add">
+			<div class="form-group">
+				<input type="hidden" name="ls_cs_id" value="{{course.cs_id}}">
+				<input type="hidden" name="ls_id" value="<%= ls_id %>">
+				<label for="" class="col-md-2 control-label">标题</label>
+				<div class="col-md-6">
+					<input type="text" name="ls_name" class="form-control input-sm" value="<%= ls_name %>">
+				</div>
+				<div class="col-md-2">
+					<div class="checkbox">
+						<label>
+							<% if (ls_is_free) { %>
+							<input type="checkbox" name="ls_is_free" checked value="1"> 免费课时
+							<% } else { %>
+							<input type="checkbox" name="ls_is_free" value="0"> 免费课时
+							<% } %>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-md-2 control-label">简介</label>
+				<div class="col-md-8">
+					<textarea name="ls_brief" rows="5" class="form-control input-sm"><%= ls_brief %></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-md-2 control-label">视频</label>
+				<div class="col-md-8">
+					<div class="input-group">
+						<input type="text" name="ls_video" class="form-control input-sm" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入">
+						<span class="input-group-btn">
+							<a href="javascript:;" class="btn btn-success btn-sm getvideo">获取</a>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group form-inline">
+				<label for="" class="col-md-2 control-label">时长</label>
+				<div class="col-md-8">
+					<input type="text" name="ls_minute" class="form-control input-sm small" value="<%= ls_minute %>">
+					分
+					<input type="text" name="ls_seconds" class="form-control input-sm small" value="<%= ls_seconds%>">
+					秒
+					 <p class="help-block">时长必须为整数。</p>
+				</div>
+			</div>
+			<div class="form-group form-inline">
+				<label for="" class="col-md-2 control-label">建议学习时长</label>
+				<div class="col-md-8">
+					<input type="text" name="ls_recommend_duration" class="form-control input-sm small" value="<%= ls_recommend_duration %>">
+					小时
+					 <p class="help-block">（如未设置，则默认学习时长为视频时长3倍取整。）</p>
+				</div>
+			</div>
+		</form>
+	</script>
+	<!-- 课时 -->
+	<script type="text/template" id="lesson">
+		<li data-id="<%= ls_id %>">
+			<i class="fa fa-file-video-o"></i>
+			<span class="order">课时：<%= index %></span>
+			<span class="name"><%= ls_name %></span>
+			<span class="duration"><%= ls_video_duration %></span>
+			<!-- 操作 -->
+			<div class="action pull-right">
+				<a href="javascript:;" class="btn btn-info btn-xs edit">编辑</a>
+				<a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>
+			</div>
+		</li>
+	</script>
+{{/block}}
+
 {{#block ('script')}}
 
 	<script>
+
+		var lessonModal = $('#lessonModal'),
+			body = lessonModal.find('.modal-body'),
+			lessons = $('.lessons ul'),
+			total = $('.total');
+
 		// 视频管理
 		$('#Lessons').on('click', '.btn', function () {
-			var _this = $(this);
+			var _this = $(this),
+				html = '';
 
 			if(_this.is('.delete')) {
 				alert('delete');
 				return;
 			}
 
+			// 添加
 			if(_this.is('.add')) {
 
-				$('#lessonModal').modal();
+				html = template('form', {});
+
+				body.html(html);
+
+				lessonModal.modal();
 
 				return;
 			}
 
+			// 编辑
 			if(_this.is('.edit')) {
-				alert(11);
+				// 获取课时信息
+				$.ajax({
+					url: '/course/create/lesson/edit',
+					type: 'post',
+					data: {ls_id: _this.closest('li').attr('data-id')},
+					success: function (data) {
+						var result = data.result;
+
+						if(data.code == 10000) {
+							var temp = result.ls_video_duration.split(':');
+							result.ls_minute = temp[0];
+							result.ls_seconds = temp[1];
+
+							html = template('form', result);
+
+							// 修改表单标识为编辑状态
+							body.html(html).find('form').attr('data-flag', 'edit');
+
+							lessonModal.modal();
+						}
+					}
+				});
+			}
+		});
+
+		// 创建课程
+		lessonModal.on('click', '.btn', function () {
+			var _this = $(this);
+
+			// 获取视频
+			if(_this.is('.getvideo')) {
+				alert('根据地址抓取');
+
+				return;
 			}
 
+			// 保存
+			if(_this.is('.save')) {
+
+				// 缺少一些验证
+
+				var form = lessonModal.find('form'),
+					flag = form.attr('data-flag');
+
+				form.ajaxSubmit({
+					url: '/course/create/lesson/add',
+					type: 'post',
+					success: function (data) {
+
+						lessonModal.modal('hide');
+
+						if(flag == 'edit') return location.reload();
+
+						// 计算索引值
+						data.result.index = lessons.children().length - 0 + 1;
+						// 更新总课时
+						total.text('课时：' + data.result.index);
+
+						html = template('lesson', data.result);
+
+						lessons.append(html);
+					}
+				});
+			}
 		});
+		
 	</script>
 
 {{/block}}
