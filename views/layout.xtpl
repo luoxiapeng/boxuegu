@@ -142,13 +142,14 @@
 	{{{block ('widget')}}}
 	<!-- 模板 -->
 	{{{block ('template')}}}
-	<script src="/static/jquery/dist/jquery.min.js"></script>
-	<script src="/static/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/static/jquery/dist/jquery.js"></script>
+	<script src="/static/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="/static/ckeditor/ckeditor.js"></script>
 	<script src="/static/uploadify/jquery.uploadify.js"></script>
 	<script src="/static/Jcrop/js/Jcrop.js"></script>
 	<script src="/static/artTemplate/template-native.js"></script>
 	<script src="/static/nprogress/nprogress.js"></script>
+	<script src="/static/echarts/dist/echarts.js"></script>
 	<script src="/static/jquery-form/jquery.form.js"></script>
 	<script>
 		// 折叠效果
