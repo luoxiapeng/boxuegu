@@ -267,6 +267,59 @@ a:focus {
   padding: 40px 0 20px;
   background-color: #FFF;
 }
+.main .teacher-profile .settings {
+  padding: 40px 0 20px;
+  background-color: #FFF;
+}
+.main .teacher-profile .settings select {
+  width: 32%;
+  margin-right: 2%;
+  float: left;
+}
+.main .teacher-profile .settings select:last-child {
+  margin-right: 0;
+}
+.main .teacher-profile .profile .cell {
+  padding: 15px;
+  color: #FFF;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.main .teacher-profile .profile .cell .fa {
+  font-size: 50px;
+  float: left;
+}
+.main .teacher-profile .profile .cell span,
+.main .teacher-profile .profile .cell h5 {
+  display: block;
+  line-height: 1.8;
+  margin: 0 0 0 70px;
+}
+.main .teacher-profile .profile .cell h5 {
+  font-size: 15px;
+}
+.main .teacher-profile .profile .cell span {
+  font-size: 13px;
+}
+.main .teacher-profile .profile .money {
+  background-color: #FC8675;
+}
+.main .teacher-profile .profile .th {
+  background-color: #5AB6DF;
+}
+.main .teacher-profile .profile .user {
+  background-color: #65CEA7;
+}
+.main .teacher-profile .profile .eye {
+  background-color: #EBC85E;
+}
+.main .teacher-profile .profile .chart {
+  min-height: 400px;
+  padding: 30px 15px;
+  margin-top: 20px;
+  background-color: #FFF;
+  overflow: hidden;
+}
 .main .course-add .steps {
   min-height: 500px;
   margin-bottom: 80px;
