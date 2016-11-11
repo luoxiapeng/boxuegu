@@ -3,13 +3,15 @@ var router = require('express').Router();
 
 var upload = require('../utils/upload');
 
+var common = require('../utils/common');
+
 var category = require('../models/category');
 
 var course = require('../models/course');
 
-var common = require('../utils/common');
-
 var teacher = require('../models/teacher');
+
+var lesson = require('../models/lesson');
 
 // 路径前缀
 router.prefix = '/course';
@@ -147,11 +149,58 @@ router.get('/create/lesson/:cs_id', function (req, res) {
 			data.teacher = result[0];
 
 			// 还差一个课时信息
+			lesson.list(cs_id, function (err, result) {
+				if(err) return;
+				data.lessons = result;
 
-			res.render('course/lesson', data);
+				res.render('course/lesson', data);
+			});
+			
 		});
 	});
 
+});
+
+// 添加课时
+router.post('/create/lesson/add', function (req, res) {
+
+	var body = req.body;
+
+	// 处理时间
+	body.ls_video_duration = body.ls_minute + ':' + body.ls_seconds;
+
+	delete body.ls_minute;
+	delete body.ls_seconds;
+
+	lesson.add(body, function (err, result) {
+		if(err) return;
+
+		// 插入ID
+		body.ls_id = result.insertId;
+
+		res.json({
+			code: 10000,
+			msg: '成功啦',
+			result: body
+		});
+	});
+});
+
+// 获取课时信息
+router.post('/create/lesson/edit', function (req, res) {
+	console.log(req.body);
+
+	var ls_id = req.body.ls_id;
+
+	lesson.find(ls_id, function (err, result) {
+		if(err) console.log(err);
+
+		res.json({
+			code: 10000,
+			msg: '成功啦',
+			result: result[0]
+		});
+	});
 });
 
 // 所有课程
