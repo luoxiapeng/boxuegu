@@ -11,6 +11,11 @@ router.get('/', function (req, res) {
 	res.render('dashboard/index', {});
 });
 
+// 个人中心
+router.get('/profile', function (req, res) {
+	res.render('dashboard/profile', {});
+});
+
 // 登录页面
 router.get('/login', function (req, res) {
 	res.render('login/index', {});

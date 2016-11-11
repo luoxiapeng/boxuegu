@@ -115,7 +115,7 @@
 					</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="/logout">
+							<a href="/profile">
 								<i class="fa fa-user"></i>
 								个人中心
 							</a>
