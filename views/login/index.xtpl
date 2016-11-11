@@ -34,6 +34,7 @@
 	</div>
 	<script src="/static/jquery/dist/jquery.min.js"></script>
 	<script>
+		// 登陆
 		$('#login').on('submit', function () {
 			var _this = $(this);
 
