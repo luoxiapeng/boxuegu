@@ -8,25 +8,45 @@
 			<li class="active">讲师添加</li>
 		</ol>
 		<div class="teacher-add">
-			<form class="form-horizontal">
+			<form action="" class="form-horizontal col-md-offset-2">
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">姓名</label>
-					<div class="col-md-5">
-						<input type="text" name="tc_name" class="form-control input-sm" placeholder="讲师姓名">
+					<div class="col-md-4">
+						<input type="text" name="tc_name" class="form-control input-sm" placeholder="讲师名称">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">密码</label>
-					<div class="col-md-5">
+					<div class="col-md-4">
 						<input type="password" name="tc_pass" class="form-control input-sm">
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-md-8">
-						<button class="btn btn-success btn-sm pull-right"> 创 建 </button>
+					<label for="" class="col-md-3 control-label">类型</label>
+					<div class="col-md-2">
+						<select name="tc_type" class="form-control input-sm">
+							<option value="1">讲师</option>
+							<option value="0">管理员</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-md-3 control-label">性别</label>
+					<div class="col-md-4">
+						<label class="radio-inline">
+							<input type="radio" name="tc_gender" value="0" checked> 男
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="tc_gender" value="1"> 女
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-7">
+						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 添 加 ">
 					</div>							
 				</div>
-			</form>					
+			</form>				
 		</div>
 	</div>
 {{/block}}
@@ -43,6 +63,9 @@
 				data: _this.parents('form').serialize(),
 				success: function (data) {
 					alert(data.msg);
+					if(data.code == 10000) {
+						location.reload();
+					}
 				}
 			});
 

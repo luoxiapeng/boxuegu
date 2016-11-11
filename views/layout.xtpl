@@ -28,25 +28,25 @@
 			<ul class="list-unstyled">
 				<li>
 					<a href="/">
-						<i class="fa fa-home"></i>
+						<i class="fa fa-dashboard"></i>
 						仪表盘
 					</a>
 				</li>
 				<li>
 					<a href="/users">
-						<i class="fa fa-bell"></i>
+						<i class="fa fa-group"></i>
 						用户管理
 					</a>
 				</li>
 				<li>
 					<a href="/teacher">
-						<i class="fa fa-bell"></i>
+						<i class="fa fa-mortar-board pull-left"></i>
 						讲师管理
 					</a>
 				</li>
 				<li>
 					<a href="javascript:;">
-						<i class="fa fa-cog"></i>
+						<i class="fa fa-th"></i>
 						课程管理
 						<i class="arrow fa fa-angle-right"></i>
 					</a>
@@ -67,7 +67,8 @@
 							</a>
 						</li>
 						<li>
-							<a href="/course/topic">
+							<!-- <a href="/course/topic"> -->
+							<a href="javascript:;">
 								课程专题
 							</a>
 						</li>
@@ -75,7 +76,7 @@
 				</li>
 				<li>
 					<a href="/advert">
-						<i class="fa fa-bell"></i>
+						<i class="fa fa-cubes pull-left"></i>
 						广告管理
 					</a>
 				</li>
@@ -114,9 +115,9 @@
 					</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li>
-							<a href="javascript:;">
-								<i class="fa fa-bell"></i>
-								<span class="badge">8</span>
+							<a href="/logout">
+								<i class="fa fa-user"></i>
+								个人中心
 							</a>
 						</li>
 						<li>

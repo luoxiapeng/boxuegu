@@ -59,7 +59,7 @@ a:focus {
   background-color: #243443;
 }
 .aside .navs a + ul a {
-  padding-left: 40px;
+  padding-left: 46px;
 }
 .aside .navs .active {
   color: #F6F6F6;
@@ -101,6 +101,9 @@ a:focus {
 .main .header .navbar-nav a {
   position: relative;
   background-color: transparent;
+}
+.main .header .navbar-nav .fa {
+  font-size: 16px;
 }
 .main .header .navbar-nav .badge {
   line-height: 1;
