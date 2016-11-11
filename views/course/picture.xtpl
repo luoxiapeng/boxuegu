@@ -64,9 +64,9 @@
                     </div>
 					<div class="col-md-2">
                         {{#if (course.cs_cover_original)}}
-                        <input type="button" value="裁切图片" id="crop" data-status="crop" class="btn btn-warning">
+                        <input type="button" value="裁切图片" id="crop" data-status="crop" class="btn btn-warning btn-sm">
                         {{else}}
-                        <input type="button" value="裁切图片" id="crop" disabled class="btn btn-warning">
+                        <input type="button" value="裁切图片" id="crop" disabled class="btn btn-warning btn-sm">
                         {{/if}}
                     </div>
                     <!-- 图片参数 -->
@@ -164,7 +164,7 @@
             // 上传预览
             $('#file_upload').uploadify({
                 auto: 'true',
-                buttonClass: 'btn btn-success',
+                buttonClass: 'btn btn-success btn-sm',
                 width: '82',
                 height: 'auto',
                 buttonText: '上传图片',
