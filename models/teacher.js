@@ -23,7 +23,7 @@ exports.find = function (tc_id, cb) {
 }
 
 exports.show = function (cb) {
-	var query = 'SELECT * FROM `teacher`';
+	var query = 'SELECT * FROM `teacher` WHERE `tc_type` != 0';
 
 	db.query(query, cb);
 }

@@ -15,16 +15,10 @@
 			<div class="panel-body">
 				<form action="" class="form-inline">
 					<select name="" class="form-control input-sm">
-						<option value="">按年龄</option>
+						<option value="">按入职日期</option>
 					</select>
 					<select name="" class="form-control input-sm">
 						<option value="">按性别</option>
-					</select>
-					<select name="" class="form-control input-sm">
-						<option value="">按地区</option>
-					</select>
-					<select name="" class="form-control input-sm">
-						<option value="">按日期</option>
 					</select>
 					<button class="btn btn-success btn-sm">筛选</button>
 					<div class="input-group pull-right">
@@ -35,7 +29,41 @@
 					</div>
 				</form>
 			</div>
-			<!-- code here -->
+			<table class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>姓名</th>
+						<th>昵称</th>
+						<th>生日</th>
+						<th>性别</th>
+						<th>手机号码</th>
+						<th>入职日期</th>
+						<th>邮箱</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each (teachers)}}
+					<tr>
+						<td>{{xindex + 1}}</td>
+						<td>{{this.tc_name}}</td>
+						<td>{{this.tc_nickname}}</td>
+						<td>{{this.tc_brithday}}</td>
+						<td>
+							{{#if (this.tc_gender)}}女{{else}}男{{/if}}
+						</td>
+						<td>{{this.tc_cellphone}}</td>
+						<td>{{this.tc_join_time}}</td>
+						<td>{{this.tc_email}}</td>
+						<td>
+							<a href="/users/profile" class="btn btn-info btn-xs">查看</a>
+							<a href="javascript::" class="btn btn-warning btn-xs">注销</a>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
 		</div>
 	</div>
 {{/block}}
