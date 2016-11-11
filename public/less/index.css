@@ -127,7 +127,12 @@ a:focus {
   border-radius: 4px;
 }
 .main .body .table {
+  text-align: center;
   background-color: #FFF;
+}
+.main .body th {
+  text-align: center;
+  font-weight: normal;
 }
 .main .body td {
   vertical-align: middle;
