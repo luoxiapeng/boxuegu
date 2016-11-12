@@ -13,16 +13,18 @@
 			<div class="search">
 				<form action="" class="form-inline">
 					<select name="" class="form-control input-sm">
-						<option value="">按年龄</option>
+						<option value="">按类别</option>
+						<option value="">前端开发</option>
+						<option value="">后端开发</option>
+						<option value="">数据库</option>
+						<option value="">视觉设计</option>
 					</select>
 					<select name="" class="form-control input-sm">
-						<option value="">按性别</option>
-					</select>
-					<select name="" class="form-control input-sm">
-						<option value="">按地区</option>
-					</select>
-					<select name="" class="form-control input-sm">
-						<option value="">按日期</option>
+						<option value="">按讲师</option>
+						<option value="">赵玉川</option>
+						<option value="">李鹏周</option>
+						<option value="">王朝华</option>
+						<option value="">汪磊</option>
 					</select>
 					<button class="btn btn-success btn-sm">筛选</button>
 					<div class="input-group pull-right">

@@ -39,7 +39,6 @@
 				url: '/course/create',
 				type: 'post',
 				success: function (data) {
-					// console.log(data)
 					if(data.code == 10000) {
 						location.href = 'create/basic/' + data.result.id;
 					}

@@ -1,7 +1,7 @@
 
 var router = require('express').Router();
 
-var upload = require('../utils/upload');
+var uploader = require('../utils/upload').upload('./uploads/original');
 
 var common = require('../utils/common');
 
@@ -205,9 +205,11 @@ router.post('/create/lesson/edit', function (req, res) {
 // 所有课程
 router.get('/list/:p?', function (req, res) {
 
-	var p = req.params.p;
+	var page = req.params.p;
+	var tc_type = req.session.loginfo.tc_type;
+	var tc_id = req.session.loginfo.tc_id;
 
-	course.list(p, function (err, result) {
+	course.list(tc_id, tc_type, function (err, result) {
 		res.render('course/list', {courses: result});
 	});
 
@@ -276,7 +278,7 @@ router.get('/category/edit/:cg_id', function (req, res) {
 });
 
 //  图片上传
-router.post('/create/upload', upload.single('cs_cover_original'), function (req, res) {
+router.post('/create/upload', uploader.single('cs_cover_original'), function (req, res) {
 	// console.log(req.body);
 	var body = {
 		cs_cover_original: req.file.filename,

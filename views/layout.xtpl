@@ -42,12 +42,14 @@
 						用户管理
 					</a>
 				</li>
+				{{#if (loginfo.tc_type === 0)}}
 				<li>
 					<a href="/teacher">
 						<i class="fa fa-mortar-board pull-left"></i>
 						讲师管理
 					</a>
 				</li>
+				{{/if}}
 				<li>
 					<a href="javascript:;">
 						<i class="fa fa-th"></i>
@@ -65,11 +67,13 @@
 								课程列表
 							</a>
 						</li>
+						{{#if (loginfo.tc_type === 0)}}
 						<li>
 							<a href="/course/category">
 								课程分类
 							</a>
 						</li>
+						{{/if}}
 						<li>
 							<!-- <a href="/course/topic"> -->
 							<a href="javascript:;">
@@ -84,6 +88,7 @@
 						广告管理
 					</a>
 				</li>
+				{{#if (loginfo.tc_type === 0)}}
 				<li>
 					<a href="javascript:;">
 						<i class="fa fa-cog"></i>
@@ -103,6 +108,7 @@
 						</li>
 					</ul>
 				</li>
+				{{/if}}
 			</ul>
 		</div>
 	</div>
@@ -155,6 +161,7 @@
 	<script src="/static/nprogress/nprogress.js"></script>
 	<script src="/static/echarts/dist/echarts.js"></script>
 	<script src="/static/jquery-form/jquery.form.js"></script>
+	<script src="/static/js/jquery.region.js"></script>
 	<script>
 		// 折叠效果
 		$('.navs ul').prev('a').on('click', function () {

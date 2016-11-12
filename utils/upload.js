@@ -1,21 +1,21 @@
 
 var multer = require('multer');
 
-var storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, './uploads/original');
-	},
+exports.upload = function (path) {
+	var storage = multer.diskStorage({
+		destination: function (req, file, cb) {
+			cb(null, path);
+		},
 
-	filename: function (req, file, cb) {
-		var originalname = file.originalname,
-			fileExt = originalname.slice(originalname.lastIndexOf('.')),
-			fileName = originalname.slice(0, originalname.lastIndexOf('.'));
+		filename: function (req, file, cb) {
+			var originalname = file.originalname,
+				fileExt = originalname.slice(originalname.lastIndexOf('.')),
+				fileName = originalname.slice(0, originalname.lastIndexOf('.'));
 
-		cb(null, fileName + '-' + Date.now() + fileExt);
-	}
+			cb(null, fileName + '-' + Date.now() + fileExt);
+		}
+	});
 
-});
 
-upload = multer({storage: storage});
-
-module.exports = upload;
+	return multer({storage: storage});
+};

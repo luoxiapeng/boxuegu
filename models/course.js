@@ -45,9 +45,14 @@ exports.resize = function (body, cb) {
 }
 
 // 课程列表
-exports.list = function (body, cb) {
-
-	var query = 'SELECT * FROM `course`, `teacher`, `category` WHERE cs_tc_id = tc_id AND cs_cg_id = cg_id';
+exports.list = function (tc_id, tc_type, cb) {
+	var query;
+	// 管理员
+	if(tc_type == 0) {
+		query = 'SELECT * FROM `course`, `teacher`, `category` WHERE cs_tc_id = tc_id AND cs_cg_id = cg_id';
+	} else {
+		query = 'SELECT * FROM `course`, `teacher`, `category` WHERE cs_tc_id = tc_id AND cs_cg_id = cg_id AND cs_tc_id = ' + tc_id;
+	}
 
 	db.query(query, cb);
 
