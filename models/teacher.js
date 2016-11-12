@@ -28,6 +28,16 @@ exports.show = function (cb) {
 	db.query(query, cb);
 }
 
+exports.update = function (body, cb) {
+	var query = 'UPDATE `teacher` SET ? WHERE `tc_id` = ?';
+
+	var tc_id = body.tc_id;
+
+	delete body.tc_id;
+
+	db.query(query, [body, tc_id], cb);
+}
+
 
 
 
