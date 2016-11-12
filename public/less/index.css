@@ -271,7 +271,7 @@ a:focus {
   padding: 40px 0 20px;
   background-color: #FFF;
 }
-.main .teacher-profile .settings .avatar {
+.main .teacher-profile .settings .preview {
   width: 120px;
   height: 120px;
   padding: 0;
@@ -279,10 +279,10 @@ a:focus {
   overflow: hidden;
   position: relative;
 }
-.main .teacher-profile .settings .avatar:hover .cover {
+.main .teacher-profile .settings .preview:hover .cover {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.main .teacher-profile .settings .avatar:hover .fa-upload {
+.main .teacher-profile .settings .preview:hover .fa-upload {
   color: rgba(240, 240, 240, 0.8);
 }
 .main .teacher-profile .settings input[type="file"] {
