@@ -13,35 +13,39 @@
 	<div class="login">
 		<div class="login-wrap">
 			<div class="avatar">
-				<img src="/static/monkey.png" class="img-circle" alt="">
+				{{#if (loginfo.tc_avatar)}}
+				<img src="/static/avatar/{{loginfo.tc_avatar}}" class="img-circle" alt="">
+				{{else}}
+				<img src="/static/images/default.png" class="img-circle" alt="">
+				{{/if}}
 			</div>
 			<form id="login" class="col-md-offset-1 col-md-10">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">
 						<i class="fa fa-user"></i>
 					</span>
-					<input type="text" name="tr_name" class="form-control" placeholder="用户名">
+					<input type="text" name="tc_name" class="form-control" placeholder="用户名">
 				</div>
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">
 						<i class="fa fa-key"></i>
 					</span>
-					<input type="password" name="tr_pass" class="form-control" placeholder="密码">
+					<input type="password" name="tc_pass" class="form-control" placeholder="密码">
 				</div>
 				<button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
 			</form>
 		</div>
 	</div>
 	<script src="/static/jquery/dist/jquery.min.js"></script>
+	<script src="/static/jquery-form/jquery.form.js"></script>
 	<script>
 		// 登陆
 		$('#login').on('submit', function () {
 			var _this = $(this);
 
-			$.ajax({
+			_this.ajaxSubmit({
 				url: '/login',
-				method: 'post',
-				data: _this.serialize(),
+				type: 'post',
 				success: function (data) {
 					if(data.code == 10000) {
 						location.href = '/';

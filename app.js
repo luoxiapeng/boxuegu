@@ -5,13 +5,11 @@ var glob = require('glob');
 
 var bodyParser = require('body-parser');
 
+var cookieParser = require('cookie-parser');
+
 var session = require('express-session');
 
 var app = express();
-
-app.set('demo', 'hhh');
-
-app.locals.title = 'express';
 
 // 设置模板引擎
 app.set('views','./views');
@@ -25,6 +23,9 @@ app.use('/static', express.static('bower_components'));
 // 解析请求主体(FormData)
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// 解析cookie
+app.use(cookieParser('studyit'));
+
 // session
 app.use(session({
 	secret: 'studyit',
@@ -34,15 +35,18 @@ app.use(session({
 }));
 
 // 登录验证
-// app.use(function (req, res, next) {
-// 	var url = req.originalUrl;
+app.use(function (req, res, next) {
+	var url = req.originalUrl;
 
-// 	if(url != '/login' && !req.session.loginfo) {
-// 		res.redirect('/login');
-// 	}
+	// 全局赋值
+	app.locals.loginfo = req.cookies.loginfo;
 
-// 	next();
-// });
+	if(url != '/login' && !req.session.loginfo) {
+		return res.redirect('/login');
+	}
+
+	next();
+});
 
 // 自动载入控制器
 var routes = glob.sync('./routes/*.js', {cwd: __dirname});

@@ -5,17 +5,17 @@ var md5 = require('md5');
 
 exports.find = function (body, cb) {
 	// 登录名称
-	var tr_name = body['tr_name'];
+	var tc_name = body['tc_name'];
 	// md5处理
-	var tr_pass = md5(body['tr_pass']);
+	var tc_pass = md5(body['tc_pass']);
 
 	db.query(
-		'SELECT `tr_id`, `tr_name`, `tr_avatar`, `tr_nickname` FROM `teacher` WHERE `tr_name` = ? AND `tr_pass` = ?',
-		[tr_name, tr_pass],
+		'SELECT `tc_id`, `tc_name`, `tc_avatar`, `tc_nickname` FROM `teacher` WHERE `tc_name` = ? AND `tc_pass` = ?',
+		[tc_name, tc_pass],
 		function (err, rows) {
-			if(err) return cb(err);
+			if(err) return;
 			
-			cb(null, rows[0]);
+			cb(null, rows);
 		}
 	);
 }

@@ -19,9 +19,13 @@
 		<div class="profile">
 			<!-- 头像 -->
 			<div class="avatar img-circle">
-				<img src="/static/avatar.jpg">
+				{{#if (loginfo.tc_avatar)}}
+				<img src="/static/avatar/{{loginfo.tc_avatar}}">
+				{{else}}
+				<img src="/static/images/default.png">
+				{{/if}}
 			</div>
-			<h4>布头儿</h4>
+			<h4>{{loginfo.tc_name}}</h4>
 		</div>
 		<!-- 导航菜单 -->
 		<div class="navs">
