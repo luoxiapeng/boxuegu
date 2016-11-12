@@ -7,7 +7,6 @@
 			<form id="profile" class="form-horizontal">
 				<div class="form-group">
 					<input type="hidden" name="tc_id" id="tcID" value="{{teacher.tc_id}}">
-					<input type="hidden" name="tc_avatar" value="{{teacher.tc_avatar}}">
 					<label for="" class="col-md-3 control-label">姓名</label>
 					<div class="col-md-5">
 						<p class="form-control-static">{{teacher.tc_name}}</p>
