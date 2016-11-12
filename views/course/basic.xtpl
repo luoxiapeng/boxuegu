@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<label for="" class="col-md-2 control-label">标题</label>
 						<div class="col-md-8">
-							<input type="text" name="cs_name" value="{{course.cs_name}}" class="form-control input-sm" value="Git指南">
+							<input type="text" name="cs_name" value="{{course.cs_name}}" class="form-control input-sm">
 						</div>
 						<input type="hidden" name="cs_id" value="{{course.cs_id}}">
 					</div>

@@ -144,6 +144,10 @@ a:focus {
 .main .body .pagination {
   margin-top: 0;
 }
+.main .body .repass {
+  padding: 40px 0 20px;
+  background-color: #FFF;
+}
 .main .user-profile .profile {
   height: 140px;
   padding: 30px 30px 0 30px;

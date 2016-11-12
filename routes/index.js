@@ -75,6 +75,27 @@ router.post('/profile/avatar', uploader.single('tc_avatar_original'), function (
 	});
 });
 
+// 修改密码
+router.get('/repass', function (req, res) {
+	res.render('dashboard/repass');
+});
+
+router.post('/repass', function (req, res) {
+	var body = req.body;
+	
+	teacher.repass(body, function (err, result) {
+		if(err) return;
+		// 清空登陆信息
+		req.session.loginfo = null;
+		res.json({
+			code: 10000,
+			msg: '修改成功，请重新登陆！',
+			result: {}
+		});
+	});
+
+});
+
 // 登录页面
 router.get('/login', function (req, res) {
 
@@ -93,7 +114,7 @@ router.post('/login', function (req, res, next) {
 			// 记录登录信息
 			req.session.loginfo = result[0];
 			// 记录在cookie中
-			res.cookie('loginfo', req.session.loginfo, {maxAge: 60 * 60 * 24 * 7});
+			res.cookie('loginfo', req.session.loginfo, {maxAge: 60 * 60 * 24 * 1000});
 
 			res.json({
 				code: 10000,

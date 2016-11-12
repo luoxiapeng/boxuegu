@@ -84,7 +84,7 @@
 				<div class="form-group">
 					<div class="col-md-8">
 						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 保 存 ">
-						<a href="" class="btn btn-link btn-sm pull-right">更改密码？</a>
+						<a href="/repass" class="btn btn-link btn-sm pull-right">更改密码？</a>
 					</div>							
 				</div>
 			</form>

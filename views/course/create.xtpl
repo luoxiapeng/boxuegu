@@ -15,7 +15,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">课程标题</label>
 					<div class="col-md-9">
-						<input type="text" name="cs_name" class="form-control input-sm" placeholder="请填写课程标题">
+						<input type="text" name="cs_name" class="form-control input-sm" autofocus placeholder="请填写课程标题">
 					</div>
 				</div>
 				<div class="col-md-11">

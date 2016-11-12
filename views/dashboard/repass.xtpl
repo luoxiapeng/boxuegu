@@ -1,0 +1,67 @@
+{{extend ('../layout')}}
+
+{{#block ('body')}}
+	<!-- 修改密码 -->
+	<div class="body">
+		<div class="repass">
+			<form id="repassForm" autocomplete="off" class="form-horizontal col-md-offset-2">
+				<input type="hidden" name="tc_id" value="{{loginfo.tc_id}}">
+				<div class="form-group">
+					<label for="" class="col-md-3 control-label">原密码</label>
+					<div class="col-md-4">
+						<input type="password" name="tc_pass" class="form-control input-sm" autofocus>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-md-3 control-label">新密码</label>
+					<div class="col-md-4">
+						<input type="password" name="tc_newpass" class="form-control input-sm">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-md-3 control-label">确认密码</label>
+					<div class="col-md-4">
+						<input type="password" name="tc_repass" class="form-control input-sm">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-7">
+						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 修 改 ">
+					</div>							
+				</div>
+			</form>
+		</div>
+	</div>
+{{/block}}
+
+{{#block ('script')}}
+	<script>
+		$('#repassForm').on('submit', function () {
+			var _this = $(this),
+				newpass = _this.find('[name="tc_newpass"]').val(),
+				repass = _this.find('[name="tc_repass"]').val();
+
+			// 简单验证
+			if(newpass != repass) {
+				alert('两次密码不一致！');
+				return false;
+			}
+
+			_this.ajaxSubmit({
+				url: '/repass',
+				type: 'post',
+				success: function (data) {
+					alert(data.msg);
+					if(data.code == 10000) {
+						location.href = '/login';
+					}
+				}
+			});
+
+			return false;
+		});
+	</script>
+{{/block}}
+
+
+
