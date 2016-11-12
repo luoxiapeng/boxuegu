@@ -38,6 +38,16 @@ exports.update = function (body, cb) {
 	db.query(query, [body, tc_id], cb);
 }
 
+exports.repass = function (body, cb) {
+	var tc_pass = md5(body.tc_pass);
+	var tc_newpass = md5(body.tc_newpass);
+	var tc_id = body.tc_id;
+
+	var query = 'UPDATE `teacher` SET `tc_pass` = ? WHERE `tc_id` = ? AND `tc_pass` = ?';
+
+	db.query(query, [tc_newpass, tc_id, tc_pass], cb);
+}
+
 
 
 

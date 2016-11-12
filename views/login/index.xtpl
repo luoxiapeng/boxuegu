@@ -19,12 +19,12 @@
 				<img src="/static/images/default.png" class="img-circle" alt="">
 				{{/if}}
 			</div>
-			<form id="login" class="col-md-offset-1 col-md-10">
+			<form id="login" autocomplete="off" class="col-md-offset-1 col-md-10">
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">
 						<i class="fa fa-user"></i>
 					</span>
-					<input type="text" name="tc_name" class="form-control" placeholder="用户名">
+					<input type="text" name="tc_name" class="form-control" autofocus placeholder="用户名">
 				</div>
 				<div class="input-group input-group-lg">
 					<span class="input-group-addon">
