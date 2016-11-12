@@ -14,9 +14,7 @@ exports.add = function (body, cb) {
 	
 	delete body.ls_id;
 
-	var res = db.query(query, [body, ls_id], cb);
-
-	console.log(res.sql)
+	db.query(query, [body, ls_id], cb);
 
 }
 

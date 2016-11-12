@@ -8,6 +8,8 @@ router.prefix = '/';
 
 // 首页
 router.get('/', function (req, res) {
+
+
 	res.render('dashboard/index', {});
 });
 
@@ -18,6 +20,7 @@ router.get('/profile', function (req, res) {
 
 // 登录页面
 router.get('/login', function (req, res) {
+
 	res.render('login/index', {});
 });
 
@@ -31,7 +34,9 @@ router.post('/login', function (req, res, next) {
 
 		if(result) {
 			// 记录登录信息
-			req.session.loginfo = result;
+			req.session.loginfo = result[0];
+			// 记录在cookie中
+			res.cookie('loginfo', req.session.loginfo, {maxAge: 60 * 60 * 24 * 7});
 
 			res.json({
 				code: 10000,
@@ -45,7 +50,6 @@ router.post('/login', function (req, res, next) {
 			code: 10001,
 			msg: '登录失败'
 		});
-
 	});
 });
 

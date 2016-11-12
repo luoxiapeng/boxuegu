@@ -188,12 +188,11 @@ router.post('/create/lesson/add', function (req, res) {
 
 // 获取课时信息
 router.post('/create/lesson/edit', function (req, res) {
-	console.log(req.body);
 
 	var ls_id = req.body.ls_id;
 
 	lesson.find(ls_id, function (err, result) {
-		if(err) console.log(err);
+		if(err) return;
 
 		res.json({
 			code: 10000,
