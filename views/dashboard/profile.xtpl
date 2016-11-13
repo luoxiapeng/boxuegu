@@ -16,7 +16,7 @@
 					<label for="" class="col-md-3 control-label">头像</label>
 					<div class="col-md-2 preview">
 						{{#if (teacher.tc_avatar)}}
-						<img src="/static/avatar/{{teacher.tc_avatar}}">
+						<img src="/static/avatars/{{teacher.tc_avatar}}">
 						{{else}}
 						<img src="/static/images/default.png">
 						{{/if}}
@@ -27,9 +27,9 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="" class="col-md-3 control-label">昵称</label>
+					<label for="" class="col-md-3 control-label">花名</label>
 					<div class="col-md-5">
-						<input type="text" name="tc_nickname" class="form-control input-sm" value="{{teacher.tc_nickname}}">
+						<input type="text" name="tc_roster" class="form-control input-sm" value="{{teacher.tc_roster}}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -46,7 +46,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">出生日期</label>
 					<div class="col-md-5">
-						<input type="text" name="tc_brithday" class="form-control input-sm" value="{{teacher.tc_brithday}}">
+						<input type="text" name="tc_brithday" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" class="form-control input-sm" value="{{teacher.tc_brithday}}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -82,6 +82,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="" class="col-md-3 control-label">个人介绍</label>
+					<div class="col-md-5 ckeditor">
+						<textarea name="tc_introduce" id="teacherEditor">{{#if (teacher.tc_introduce)}} {{teacher.tc_introduce}} {{else}} 写点什么吧... {{/if}}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
 					<div class="col-md-8">
 						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 保 存 ">
 						<a href="/repass" class="btn btn-link btn-sm pull-right">更改密码？</a>
@@ -95,6 +101,23 @@
 {{#block ('script')}}
 	<script>
 		(function () {
+
+			// $('#datepicker').datepicker({
+			// 	format: 'yyyy-mm-dd'
+			// });
+
+			// 配置ckeditor
+			CKEDITOR.replace('teacherEditor', {
+				toolbarGroups: [
+            		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+            		{ name: 'forms' },
+            		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+            		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+            		{ name: 'styles' },
+            		{ name: 'colors' }
+				]
+			});
+
 			// 获取省市县
 			$('.hometown').region({
 				url: '/region',
@@ -103,11 +126,20 @@
 
 			// 表单提交
 			$('#profile').on('submit', function () {
-				var _this = $(this);
+				var _this = $(this),
+					province = $('#province option:selected').text(),
+					city = $('#city option:selected').text(),
+					district = $('#district option:selected').text();
+
+                // 提交ckeditor数据
+                for(instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
 
 				_this.ajaxSubmit({
 					url: '/profile/update',
 					type: 'post',
+					data: {tc_hometown: province + '|' + city + '|' + district},
 					success: function (data) {
 						alert('修改成功！');
 					}
@@ -134,7 +166,7 @@
                     var data = JSON.parse(data);
 
                     // 预览图片
-                    $('.preview img').attr('src', '/static/avatar/' + data.result.tc_avatar);
+                    $('.preview img').attr('src', '/static/avatars/' + data.result.tc_avatar);
                 }
             });	
 

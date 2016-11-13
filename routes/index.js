@@ -7,7 +7,7 @@ var teacher = require('../models/teacher');
 
 var region = require('../models/region');
 
-var uploader = require('../utils/upload').upload('./uploads/avatar');
+var uploader = require('../utils/upload').upload('./uploads/avatars');
 
 var moment = require('moment');
 
@@ -27,8 +27,10 @@ router.get('/profile', function (req, res) {
 
 	teacher.find(tc_id, function (err, result) {
 		var data = result[0];
-		data.tc_brithday = moment(data.tc_brithday).format('YYYY-MM-DD');
-		data.tc_join_time = moment(data.tc_join_time).format('YYYY-MM-DD');
+
+		data.tc_brithday = moment(Number(data.tc_brithday)).format('YYYY-MM-DD');
+		data.tc_join_time = moment(Number(data.tc_join_time)).format('YYYY-MM-DD');
+
 		res.render('dashboard/profile', {teacher: data});
 	});
 });
@@ -43,6 +45,9 @@ router.get('/region', function (req, res) {
 // 更新资料
 router.post('/profile/update', function (req, res) {
 	var body = req.body;
+
+	// 转成时间戳
+	body.tc_brithday = moment(body.tc_brithday || 0).format('x');
 
 	teacher.update(body, function (err, result) {
 		if(err) return;

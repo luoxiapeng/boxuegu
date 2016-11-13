@@ -17,7 +17,7 @@
 				</div>
 				<dl class="info">
 					<dt>{{course.cs_name}}</dt>
-					{{#if (lgoinfo.tc_type !== 0)}}
+					{{#if (loginfo.tc_type)}}
 					<dd>讲师：{{loginfo.tc_name}}</dd>
 					{{/if}}
 				</dl>
@@ -59,8 +59,8 @@
 					</div>
 					<div class="form-group">
 						<label for="" class="col-md-2 control-label">课程描述</label>
-						<div class="col-md-8">
-							<textarea name="cs_brief" id="basicEditor" rows="10" class="form-control input-sm">
+						<div class="col-md-8 ckeditor">
+							<textarea name="cs_brief" id="basicEditor" rows="10">
 								{{course.cs_brief}}
 							</textarea>
 						</div>
@@ -135,12 +135,24 @@
 		(function () {
 			// 配置ckeditor
 			CKEDITOR.replace('basicEditor', {
-				customConfig: '/static/ckeditor/custom_config.js'
+				toolbarGroups: [
+					{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+					{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+					{ name: 'links' },
+					{ name: 'insert' },
+					{ name: 'forms' },
+					'/',
+					{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+					{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+					{ name: 'styles' },
+					{ name: 'colors' }
+				]
 			});
 
 			// 提交表单
 			$('#basicForm').on('submit', function () {
 
+				// 提交ckeditor数据
 				for(instance in CKEDITOR.instances) {
 					CKEDITOR.instances[instance].updateElement();
 				}

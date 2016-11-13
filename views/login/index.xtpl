@@ -14,7 +14,7 @@
 		<div class="login-wrap">
 			<div class="avatar">
 				{{#if (loginfo.tc_avatar)}}
-				<img src="/static/avatar/{{loginfo.tc_avatar}}" class="img-circle" alt="">
+				<img src="/static/avatars/{{loginfo.tc_avatar}}" class="img-circle" alt="">
 				{{else}}
 				<img src="/static/images/default.png" class="img-circle" alt="">
 				{{/if}}
