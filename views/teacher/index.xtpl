@@ -43,7 +43,7 @@
 						<th>操作</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="teacherList">
 					{{#each (teachers)}}
 					<tr>
 						<td>{{xindex + 1}}</td>
@@ -57,8 +57,9 @@
 						<td>{{this.tc_join_time}}</td>
 						<td>{{this.tc_email}}</td>
 						<td>
-							<a href="/users/profile" class="btn btn-info btn-xs">查看</a>
-							<a href="javascript::" class="btn btn-warning btn-xs">注销</a>
+							<a href="javascript:;" data-id="{{this.tc_id}}" class="btn btn-info btn-xs view">查 看</a>
+							<a href="/teacher/edit/{{this.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
+							<a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
 						</td>
 					</tr>
 					{{/each}}
@@ -67,3 +68,102 @@
 		</div>
 	</div>
 {{/block}}
+
+{{#block ('widget')}}
+
+	<!-- 模态框 添加课程 -->
+	<div class="modal fade" id="teacherModal">
+		<div class="modal-dialog" style="width: 750px;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="panel-title">讲师信息</h4>
+				</div>
+				<div class="panel-body">
+					<table class="table table-bordered table-condensed"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{{/block}}
+
+{{#block ('template')}}
+
+	<script type="text/template" id="teacherInfo">
+		<tbody>
+			<tr>
+				<th>姓名:</th><td><%= tc_name %></td>
+				<th>职位:</th><td colspan="3">讲师</td>
+				<td rowspan="4" width="128">
+					<div class="avatar">
+						<% if(tc_avatar) { %>
+						<img src="/static/avatars/<%= tc_avatar %>" alt="">
+						<% } else { %>
+						<img src="/static/images/default.png" alt="">
+						<% } %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>花名:</th><td><%= tc_roster %></td>
+				<th>出生日期:</th><td colspan="3"><%= tc_brithday %></td>
+			</tr>
+			<tr>
+				<th>性别:</th>
+				{{#if (tc_gender === 0)}}
+				<td>男</td>
+				{{else}}
+				<td>女</td>
+				{{/if}}
+				<th>入职日期:</th><td colspan="3"><%= tc_join_time %></td>
+			</tr>
+			<tr>
+				<th>手机号码:</th><td colspan="2"><%= tc_cellphone %></td>
+				<th>邮箱:</th><td colspan="2"><%= tc_email %></td>
+			</tr>
+			<tr>
+				<th>籍贯:</th><td colspan="6"><%= tc_hometown.split('|').join(' ') %></td>
+			</tr>
+			<tr>
+				<td colspan="7">
+					<div class="introduce">
+						<%=# tc_introduce %>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</script>
+
+{{/block}}
+
+{{#block ('script')}}
+
+	<script>
+		
+		$('#teacherList').on('click', '.view', function () {
+			var _this = $(this),
+				tc_id = _this.attr('data-id'),
+				teacherModal = $('#teacherModal');
+
+			$.ajax({
+				url: '/teacher/view',
+				type: 'post',
+				data: {tc_id: tc_id},
+				success: function (data) {
+					// 成功获取
+					if(data.code == 10000) {
+						var html = template('teacherInfo', data.result);
+
+						teacherModal.find('table').html(html);
+
+						teacherModal.modal();
+					}
+				}
+			});
+		});
+
+	</script>
+
+{{/block}}
+

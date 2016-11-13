@@ -21,6 +21,7 @@
     "nprogress": "^0.2.0",
     "jquery-form": "^3.46.0",
     "uploadify": "^3.2.1",
-    "echarts": "^3.3.1"
+    "echarts": "^3.3.1",
+    "bootstrap-datepicker": "^1.6.4"
   }
 }

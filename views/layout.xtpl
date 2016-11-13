@@ -7,7 +7,8 @@
 	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
 	<link rel="stylesheet" href="/static/Jcrop/css/Jcrop.css">
-
+	<link rel="stylesheet" href="/static/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+	
 	<link rel="stylesheet" href="/static/less/index.css">
 	<!-- <script src="/static/less/dist/less.min.js"></script> -->
 </head>
@@ -20,7 +21,7 @@
 			<!-- 头像 -->
 			<div class="avatar img-circle">
 				{{#if (loginfo.tc_avatar)}}
-				<img src="/static/avatar/{{loginfo.tc_avatar}}">
+				<img src="/static/avatars/{{loginfo.tc_avatar}}">
 				{{else}}
 				<img src="/static/images/default.png">
 				{{/if}}
@@ -161,6 +162,8 @@
 	<script src="/static/nprogress/nprogress.js"></script>
 	<script src="/static/echarts/dist/echarts.js"></script>
 	<script src="/static/jquery-form/jquery.form.js"></script>
+	<script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<script src="/static/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 	<script src="/static/js/jquery.region.js"></script>
 	<script>
 		// 折叠效果

@@ -5,34 +5,41 @@
 		<!-- 面包屑 -->
 		<ol class="breadcrumb">
 			<li><a href="javascript:;">讲师管理</a></li>
-			<li class="active">讲师添加</li>
+            {{#if (tc_id)}}
+			<li class="active">讲师编辑</li>
+            {{else}}
+            <li class="active">讲师添加</li>
+            {{/if}}
 		</ol>
 		<div class="teacher-add">
-			<form action="" class="form-horizontal col-md-offset-2">
+			<form id="teacherForm" class="form-horizontal col-md-offset-2">
+				{{#if (tc_id)}}
+				<input type="hidden" name="tc_id" value="{{tc_id}}">
+				{{/if}}
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">姓名</label>
 					<div class="col-md-4">
-						<input type="text" name="tc_name" class="form-control input-sm" placeholder="讲师名称">
+						<input type="text" name="tc_name" class="form-control input-sm" value="{{tc_name}}" placeholder="讲师名称">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">密码</label>
 					<div class="col-md-4">
-						<input type="password" name="tc_pass" class="form-control input-sm">
+						<input type="password" name="tc_pass" {{#if (tc_pass)}} disabled {{/if}} class="form-control input-sm" value="{{tc_pass}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">入职时间</label>
 					<div class="col-md-4">
-						<input type="text" name="tc_join_name" class="form-control input-sm">
+						<input type="text" name="tc_join_time" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-date-end-date="0d" class="form-control input-sm" value="{{tc_join_time}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">类型</label>
 					<div class="col-md-2">
 						<select name="tc_type" class="form-control input-sm">
-							<option value="1">讲师</option>
-							<option value="0">管理员</option>
+							<option value="1" {{#if (tc_type === 1)}} selected {{/if}}>讲师</option>
+							<option value="0" {{#if (tc_type === 0)}} selected {{/if}}>管理员</option>
 						</select>
 					</div>
 				</div>
@@ -40,16 +47,16 @@
 					<label for="" class="col-md-3 control-label">性别</label>
 					<div class="col-md-4">
 						<label class="radio-inline">
-							<input type="radio" name="tc_gender" value="0" checked> 男
+							<input type="radio" name="tc_gender" value="0" {{#if (tc_gender !== 1)}} checked {{/if}}> 男
 						</label>
 						<label class="radio-inline">
-							<input type="radio" name="tc_gender" value="1"> 女
+							<input type="radio" name="tc_gender" value="1" {{#if (tc_gender === 1)}} checked {{/if}}> 女
 						</label>
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-md-7">
-						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 添 加 ">
+						<input type="submit" class="btn btn-success btn-sm pull-right" value=" 保 存 ">
 					</div>							
 				</div>
 			</form>				
@@ -60,13 +67,12 @@
 {{#block ('script')}}
 	<script>
 		// 添加讲师
-		$('.teacher-add .btn').on('click', function () {
+		$('#teacherForm').on('submit', function () {
 			var _this = $(this);
 
-			$.ajax({
+			_this.ajaxSubmit({
 				url: '/teacher/add',
 				type: 'post',
-				data: _this.parents('form').serialize(),
 				success: function (data) {
 					alert(data.msg);
 					if(data.code == 10000) {
@@ -76,7 +82,7 @@
 			});
 
 			return false;
-		});
+		})
 	</script>
 {{/block}}
 

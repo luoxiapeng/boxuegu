@@ -12,6 +12,7 @@
 				<h5>创建课程 <small>CREATE A COURSE</small></h5>
 			</div>
 			<form class="form-horizontal col-md-7" id="createCourse">
+				<input type="hidden" name="cs_tc_id" value="{{loginfo.tc_id}}">
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">课程标题</label>
 					<div class="col-md-9">

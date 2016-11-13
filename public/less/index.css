@@ -73,7 +73,7 @@ a:focus {
 }
 .main {
   min-width: 844px;
-  margin: 72px 0 30px 180px;
+  padding: 72px 0 30px 180px;
 }
 .main .header {
   width: 100%;
@@ -318,6 +318,12 @@ a:focus {
   left: 0;
   top: 0;
 }
+.main .teacher-profile .settings .ckeditor {
+  min-height: 300px;
+}
+.main .teacher-profile .settings textarea {
+  display: none;
+}
 .main .teacher-profile .settings select {
   width: 32%;
   margin-right: 2%;
@@ -501,6 +507,12 @@ a:focus {
   overflow: hidden;
   padding-bottom: 20px;
 }
+.main .course-add .basic .ckeditor {
+  min-height: 300px;
+}
+.main .course-add .basic textarea {
+  display: none;
+}
 .main .course-add .basic select {
   display: inline-block;
   width: 25%;
@@ -674,4 +686,17 @@ a:focus {
 }
 #lessonModal input.small {
   width: 80px;
+}
+#teacherModal .avatar {
+  width: 117px;
+  height: 117px;
+  overflow: hidden;
+}
+#teacherModal td,
+#teacherModal th {
+  color: #666;
+}
+#teacherModal .introduce {
+  min-height: 240px;
+  padding: 15px 10px;
 }

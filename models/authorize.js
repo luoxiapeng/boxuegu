@@ -10,7 +10,7 @@ exports.find = function (body, cb) {
 	var tc_pass = md5(body['tc_pass']);
 
 	db.query(
-		'SELECT `tc_id`, `tc_name`, `tc_type`, `tc_avatar`, `tc_nickname` FROM `teacher` WHERE `tc_name` = ? AND `tc_pass` = ?',
+		'SELECT `tc_id`, `tc_name`, `tc_type`, `tc_avatar`, `tc_roster` FROM `teacher` WHERE `tc_name` = ? AND `tc_pass` = ?',
 		[tc_name, tc_pass],
 		function (err, rows) {
 			if(err) return;
