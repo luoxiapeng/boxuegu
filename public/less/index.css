@@ -531,6 +531,10 @@ a:focus {
 }
 .main .course-add .picture img {
   max-width: 100%;
+  width: auto;
+}
+.main .course-add .picture input[type="file"] {
+  opacity: 0;
 }
 .main .course-add .picture .tips {
   margin: 20px 0;
