@@ -1,0 +1,7 @@
+{{extend ('./base')}}
+
+{{#block ('main')}}
+	
+	{{{block ('body')}}}
+
+{{/block}}

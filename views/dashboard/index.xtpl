@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<!-- 个人资料 -->
@@ -39,6 +39,11 @@
 			</div>
 		</div>
 	</div>
+{{/block}}
+
+{{#block ('libs')}}
+	<!-- 图表 -->
+	<script src="/static/echarts/dist/echarts.js"></script>
 {{/block}}
 
 {{#block ('script')}}

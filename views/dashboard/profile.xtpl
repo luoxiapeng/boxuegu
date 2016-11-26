@@ -1,4 +1,8 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
+
+{{#block ('style')}}
+	<link rel="stylesheet" href="/static/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+{{/block}}
 
 {{#block ('body')}}
 	<!-- 讲师资料 -->
@@ -96,6 +100,21 @@
 			</form>
 		</div>
 	</div>
+{{/block}}
+
+{{#block ('libs')}}
+	<!-- 富文本编辑器 -->
+	<script src="/static/libs/ckeditor/ckeditor.js"></script>
+	<!-- 文件上传 -->
+	<script src="/static/uploadify/jquery.uploadify.js"></script>
+	<!-- 日期插件 -->
+	<script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+	<!-- 汉化插件 -->
+	<script src="/static/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+	<!-- 省市县插件 -->
+	<script src="/static/js/jquery.region.js"></script>
+	<!-- 表单插件 -->
+	<script src="/static/jquery-form/jquery.form.js"></script>
 {{/block}}
 
 {{#block ('script')}}

@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<!-- 修改密码 -->
@@ -32,6 +32,11 @@
 			</form>
 		</div>
 	</div>
+{{/block}}
+
+{{#block ('libs')}}
+	<!-- 表单插件 -->
+	<script src="/static/jquery-form/jquery.form.js"></script>
 {{/block}}
 
 {{#block ('script')}}

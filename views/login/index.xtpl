@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>学IT - 后台管理系统</title>
-	<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+{{extend ('../layout/plain')}}
 
-	<link rel="stylesheet" href="/static/less/index.css">
-</head>
-<body>
+{{#block ('body')}}
 	<!-- 登录 -->
 	<div class="login">
 		<div class="login-wrap">
@@ -36,8 +28,13 @@
 			</form>
 		</div>
 	</div>
-	<script src="/static/jquery/dist/jquery.min.js"></script>
+{{/block}}
+
+{{#block ('libs')}}
 	<script src="/static/jquery-form/jquery.form.js"></script>
+{{/block}}
+
+{{#block ('script')}}
 	<script>
 		// 登陆
 		$('#login').on('submit', function () {
@@ -57,7 +54,5 @@
 			
 			return false;
 		});
-
 	</script>
-</body>
-</html>
+{{/block}}

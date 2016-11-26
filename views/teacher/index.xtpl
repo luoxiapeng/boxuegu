@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<!-- 讲师列表 -->
@@ -135,6 +135,10 @@
 		</tbody>
 	</script>
 
+{{/block}}
+
+{{#block ('libs')}}
+	<script src="/static/libs/artTemplate/template-native.js"></script>
 {{/block}}
 
 {{#block ('script')}}

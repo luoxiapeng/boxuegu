@@ -21,7 +21,6 @@ router.get('/', function (req, res) {
 
 // 个人中心
 router.get('/profile', function (req, res) {
-
 	// 获取讲师id
 	var tc_id = req.session.loginfo.tc_id;
 

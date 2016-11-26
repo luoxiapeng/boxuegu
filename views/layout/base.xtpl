@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学IT - 后台管理系统</title>
+	<link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/nprogress/nprogress.css">
+	{{{block ('style')}}}
+	<link rel="stylesheet/less" href="/static/less/index.less">
+	<script src="/static/less/dist/less.min.js"></script>
+</head>
+<body>
+
+	{{{block ('aside')}}}
+	
+	{{{block ('main')}}}
+
+	{{{block ('plain')}}}
+
+	{{{block ('widget')}}}
+
+	{{{block ('template')}}}
+
+	<script src="/static/jquery/dist/jquery.js"></script>
+	<script src="/static/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="/static/nprogress/nprogress.js"></script>
+	<script src="/static/js/common.js"></script>
+	{{{block ('libs')}}}
+	{{{block ('script')}}}
+</body>
+</html>

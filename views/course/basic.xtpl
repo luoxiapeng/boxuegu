@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<div class="body course-add">
@@ -127,6 +127,12 @@
 		<option value="<%= categorys[i].cg_id %>"><%= categorys[i].cg_name %></option>
 		<% } %>
 	</script>
+{{/block}}
+
+{{#block ('libs')}}
+	<script src="/static/libs/ckeditor/ckeditor.js"></script>
+	<script src="/static/uploadify/jquery.uploadify.js"></script>
+	<script src="/static/jquery-form/jquery.form.js"></script>
 {{/block}}
 
 {{#block ('script')}}

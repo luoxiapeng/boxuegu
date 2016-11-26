@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<div class="body course-add">
@@ -167,6 +167,11 @@
 			</div>
 		</li>
 	</script>
+{{/block}}
+
+{{#block ('libs')}}
+	<script src="/static/libs/artTemplate/template-native.js"></script>
+	<script src="/static/jquery-form/jquery.form.js"></script>
 {{/block}}
 
 {{#block ('script')}}
