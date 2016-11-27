@@ -6,9 +6,9 @@
 		<div class="login-wrap">
 			<div class="avatar">
 				{{#if (loginfo.tc_avatar)}}
-				<img src="/static/avatars/{{loginfo.tc_avatar}}" class="img-circle" alt="">
+				<img src="/avatars/{{loginfo.tc_avatar}}" class="img-circle" alt="">
 				{{else}}
-				<img src="/static/images/default.png" class="img-circle" alt="">
+				<img src="/images/default.png" class="img-circle" alt="">
 				{{/if}}
 			</div>
 			<form id="login" autocomplete="off" class="col-md-offset-1 col-md-10">
@@ -30,29 +30,8 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	<script>
-		// 登陆
-		$('#login').on('submit', function () {
-			var _this = $(this);
-
-			_this.ajaxSubmit({
-				url: '/login',
-				type: 'post',
-				success: function (data) {
-					if(data.code == 10000) {
-						location.href = '/';
-					} else {
-						alert(data.msg);
-					}
-				}
-			});
-			
-			return false;
-		});
+		seajs.use('/scripts/login');
 	</script>
 {{/block}}

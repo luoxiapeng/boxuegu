@@ -1,7 +1,7 @@
 {{extend ('../layout/index')}}
 
 {{#block ('style')}}
-	<link rel="stylesheet" href="/static/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+	<link rel="stylesheet" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css">
 {{/block}}
 
 {{#block ('body')}}
@@ -20,9 +20,9 @@
 					<label for="" class="col-md-3 control-label">头像</label>
 					<div class="col-md-2 preview">
 						{{#if (teacher.tc_avatar)}}
-						<img src="/static/avatars/{{teacher.tc_avatar}}">
+						<img src="/avatars/{{teacher.tc_avatar}}">
 						{{else}}
-						<img src="/static/images/default.png">
+						<img src="/images/default.png">
 						{{/if}}
 						<input type="file" id="upfile">
 						<div class="cover">
@@ -102,95 +102,9 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<!-- 富文本编辑器 -->
-	<script src="/static/libs/ckeditor/ckeditor.js"></script>
-	<!-- 文件上传 -->
-	<script src="/static/uploadify/jquery.uploadify.js"></script>
-	<!-- 日期插件 -->
-	<script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-	<!-- 汉化插件 -->
-	<script src="/static/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
-	<!-- 省市县插件 -->
-	<script src="/static/js/jquery.region.js"></script>
-	<!-- 表单插件 -->
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	<script>
-		(function () {
-
-			// $('#datepicker').datepicker({
-			// 	format: 'yyyy-mm-dd'
-			// });
-
-			// 配置ckeditor
-			CKEDITOR.replace('teacherEditor', {
-				toolbarGroups: [
-            		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-            		{ name: 'forms' },
-            		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-            		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-            		{ name: 'styles' },
-            		{ name: 'colors' }
-				]
-			});
-
-			// 获取省市县
-			$('.hometown').region({
-				url: '/region',
-				type: 'get'
-			});
-
-			// 表单提交
-			$('#profile').on('submit', function () {
-				var _this = $(this),
-					province = $('#province option:selected').text(),
-					city = $('#city option:selected').text(),
-					district = $('#district option:selected').text();
-
-                // 提交ckeditor数据
-                for(instance in CKEDITOR.instances) {
-                    CKEDITOR.instances[instance].updateElement();
-                }
-
-				_this.ajaxSubmit({
-					url: '/profile/update',
-					type: 'post',
-					data: {tc_hometown: province + '|' + city + '|' + district},
-					success: function (data) {
-						alert('修改成功！');
-					}
-				});
-
-				return false;
-			});
-
-            // 上传预览
-            $('#upfile').uploadify({
-                auto: 'true',
-                width: '120',
-                height: '120',
-                buttonText: '',
-                fileObjName: 'tc_avatar_original',
-                formData: {tc_id: $('#tcID').val()},
-                fileSizeLimit: '1MB',
-                fileTypeExts: '*.jpg; *.gif; *.png',
-                swf: '/static/uploadify/uploadify.swf',
-                uploader: '/profile/avatar',
-                itemTemplate: '<span></span>',
-                onUploadSuccess: function (file, data, response) {
-                    // 数据处理
-                    var data = JSON.parse(data);
-
-                    // 预览图片
-                    $('.preview img').attr('src', '/static/avatars/' + data.result.tc_avatar);
-                }
-            });	
-
-		})();
-
+		seajs.use('/scripts/profile');
 	</script>
 {{/block}}
 

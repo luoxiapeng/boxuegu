@@ -16,9 +16,8 @@ app.set('views','./views');
 app.set('view engine', 'xtpl');
 
 // 设置静态资源目录
-app.use('/static', express.static('public'));
-app.use('/static', express.static('uploads'));
-app.use('/static', express.static('bower_components'));
+app.use('/', express.static('public'));
+app.use('/', express.static('uploads'));
 
 // 解析请求主体(FormData)
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,21 +34,21 @@ app.use(session({
 }));
 
 // 登录验证
-app.use(function (req, res, next) {
-	var url = req.originalUrl;
+// app.use(function (req, res, next) {
+// 	var url = req.originalUrl;
 
-	// 全局赋值
-	app.locals.loginfo = req.cookies.loginfo;
+// 	// 全局赋值
+// 	app.locals.loginfo = req.cookies.loginfo;
 
-	if(url != '/login' && !req.session.loginfo) {
-		return res.redirect('/login');
-	}
+// 	if(url != '/login' && !req.session.loginfo) {
+// 		return res.redirect('/login');
+// 	}
 
-	next();
-});
+// 	next();
+// });
 
 // 自动载入控制器
-var routes = glob.sync('./routes/*.js', {cwd: __dirname});
+var routes = glob.sync('./controllers/*.js', {cwd: __dirname});
 routes.forEach(function (item) {
 	var route = require(item);
 

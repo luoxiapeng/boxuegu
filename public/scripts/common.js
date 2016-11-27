@@ -1,3 +1,9 @@
+define(function (require, exports, module) {
+
+	var $ = require('jquery');
+
+	var NProgress = require('nprogress');
+
 	// 折叠效果
 	$('.navs ul').prev('a').on('click', function () {
 		$(this).next().slideToggle();
@@ -24,3 +30,4 @@
 	}).ajaxStop(function () {
 		NProgress.done();
 	});
+})

@@ -3,9 +3,20 @@
  * @param  {[type]} $ [description]
  * @return {[type]}   [description]
  */
-// 对象方法 $.fn.waterFall = function () {}
-// 全局函数 $.each()
-!(function ($) {
+
+(function (factory) {
+    
+    if(typeof define === 'function' && define.cmd) {
+        define(function (require) {
+            var $ = require('jquery');
+
+            factory($);
+        });
+    } else {
+        factory(window.jQuery);
+    }
+
+})(function ($) {
     $.fn.region = function (options) {
 
         if(!options) return;
@@ -122,4 +133,4 @@
 
         }, 200);  
     }
-})(jQuery);
+});
