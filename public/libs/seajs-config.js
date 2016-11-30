@@ -9,6 +9,7 @@ seajs.config({
 		jcrop: 'Jcrop/js/Jcrop.js',
 		region: 'region/jquery.region.js',
 		bootstrap: 'bootstrap/js/bootstrap.js',
+		validate: 'jquery-validate/jquery-validate.js',
 		datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.js',
 		language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',
 		nprogress: 'nprogress/nprogress.js',
