@@ -98,9 +98,9 @@
 				<td rowspan="4" width="128">
 					<div class="avatar">
 						<% if(tc_avatar) { %>
-						<img src="/static/avatars/<%= tc_avatar %>" alt="">
+						<img src="/avatars/<%= tc_avatar %>" alt="">
 						<% } else { %>
-						<img src="/static/images/default.png" alt="">
+						<img src="/images/default.png" alt="">
 						<% } %>
 					</div>
 				</td>
@@ -137,36 +137,10 @@
 
 {{/block}}
 
-{{#block ('libs')}}
-	<script src="/static/libs/artTemplate/template-native.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 
 	<script>
-		
-		$('#teacherList').on('click', '.view', function () {
-			var _this = $(this),
-				tc_id = _this.attr('data-id'),
-				teacherModal = $('#teacherModal');
-
-			$.ajax({
-				url: '/teacher/view',
-				type: 'post',
-				data: {tc_id: tc_id},
-				success: function (data) {
-					// 成功获取
-					if(data.code == 10000) {
-						var html = template('teacherInfo', data.result);
-
-						teacherModal.find('table').html(html);
-
-						teacherModal.modal();
-					}
-				}
-			});
-		});
-
+		seajs.use('/scripts/teacher_list');
 	</script>
 
 {{/block}}

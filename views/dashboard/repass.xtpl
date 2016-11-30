@@ -34,37 +34,9 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<!-- 表单插件 -->
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	<script>
-		$('#repassForm').on('submit', function () {
-			var _this = $(this),
-				newpass = _this.find('[name="tc_newpass"]').val(),
-				repass = _this.find('[name="tc_repass"]').val();
-
-			// 简单验证
-			if(newpass != repass) {
-				alert('两次密码不一致！');
-				return false;
-			}
-
-			_this.ajaxSubmit({
-				url: '/repass',
-				type: 'post',
-				success: function (data) {
-					alert(data.msg);
-					if(data.code == 10000) {
-						location.href = '/login';
-					}
-				}
-			});
-
-			return false;
-		});
+		seajs.use('/scripts/repass');
 	</script>
 {{/block}}
 

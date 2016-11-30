@@ -34,18 +34,18 @@ app.use(session({
 }));
 
 // 登录验证
-// app.use(function (req, res, next) {
-// 	var url = req.originalUrl;
+app.use(function (req, res, next) {
+	var url = req.originalUrl;
 
-// 	// 全局赋值
-// 	app.locals.loginfo = req.cookies.loginfo;
+	// 全局赋值
+	app.locals.loginfo = req.cookies.loginfo;
 
-// 	if(url != '/login' && !req.session.loginfo) {
-// 		return res.redirect('/login');
-// 	}
+	if(url != '/login' && !req.session.loginfo) {
+		return res.redirect('/login');
+	}
 
-// 	next();
-// });
+	next();
+});
 
 // 自动载入控制器
 var routes = glob.sync('./controllers/*.js', {cwd: __dirname});

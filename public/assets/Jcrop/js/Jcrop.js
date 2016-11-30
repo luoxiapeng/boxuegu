@@ -3,7 +3,16 @@
  *  @license Free software under MIT License
  *  @website http://jcrop.org/
  **/
-(function($){
+(function (factory) {
+
+  if(typeof define === 'function' && define.cmd) {
+    define(function (require) {
+      var $ = require('jquery');
+      factory($);
+    })
+  }
+
+})(function($){
   'use strict';
 
   // Jcrop constructor
@@ -2856,4 +2865,4 @@ var Modernizr = (function( window, document, undefined ) {
   $.Jcrop.supportsCSSTransforms = Modernizr.csstransforms;
   $.Jcrop.supportsTouch = Modernizr.touch;
 
-})(jQuery);
+});
