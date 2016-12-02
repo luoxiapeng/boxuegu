@@ -91,7 +91,7 @@ define(function (require, exports, module) {
         formData: {cs_id: $('#csID').val()},
         fileSizeLimit: '2MB',
         fileTypeExts: '*.jpg; *.gif; *.png',
-        swf: '/uploadify/uploadify.swf',
+        swf: '/assets/uploadify/uploadify.swf',
         uploader: '/course/create/upload',
         itemTemplate: '<span></span>',
         onUploadSuccess: function (file, data, response) {

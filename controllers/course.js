@@ -295,7 +295,6 @@ router.post('/create/upload', uploader.single('cs_cover_original'), function (re
 
 // 裁切图片
 router.post('/create/crop', function (req, res) {
-	// console.log(req.body);
 
 	var body = req.body;
 

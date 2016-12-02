@@ -57,7 +57,7 @@
 {{#block ('script')}}
 
 	<script>
-		seajs.use('/scripts/category');
+		seajs.use('/scripts/course/category');
 	</script>
 
 {{/block}}

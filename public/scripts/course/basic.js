@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 
 	require('uploadify');
 
-	var ck = require('./utils/ck');
+	var ck = require('../utils/ck');
 
 	ck.create('basicEditor');
 

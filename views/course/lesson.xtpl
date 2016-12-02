@@ -173,7 +173,7 @@
 {{#block ('script')}}
 
 	<script>
-		seajs.use('/scripts/lesson');
+		seajs.use('/scripts/course/lesson');
 	</script>
 
 {{/block}}

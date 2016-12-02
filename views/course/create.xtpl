@@ -35,7 +35,7 @@
 	
 	<script>
 		
-		seajs.use('/scripts/create');
+		seajs.use('/scripts/course/create');
 
 	</script>
 

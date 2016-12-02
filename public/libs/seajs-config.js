@@ -11,6 +11,8 @@ seajs.config({
 		ckeditor: 'ckeditor/ckeditor.js',
 		uploadify: 'uploadify/jquery.uploadify.js',
 		region: 'region/jquery.region.js',
+		jcrop: 'Jcrop/js/Jcrop.js',
+		validate: 'jquery-validate/jquery-validate.js',
 		datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.js',
 		language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',
 		template: 'artTemplate/template-native.js'

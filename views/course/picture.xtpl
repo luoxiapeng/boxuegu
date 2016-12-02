@@ -91,7 +91,7 @@
 {{#block ('script')}}
 
 	<script>
-        seajs.use('/scripts/picture');
+        seajs.use('/scripts/course/picture');
 	</script>
 
 {{/block}}
