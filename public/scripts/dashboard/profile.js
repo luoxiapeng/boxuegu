@@ -2,7 +2,7 @@ define(function (require, exports, module) {
 
 	var $ = require('jquery');
 
-	var ck = require('./utils/ck');
+	var ck = require('../utils/ck');
 
 	require('uploadify');
 

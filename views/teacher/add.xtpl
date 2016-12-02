@@ -64,32 +64,9 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<!-- 日期插件 -->
-	<script src="/static/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-	<script src="/static/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js"></script>
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	<script>
-		// 添加讲师
-		$('#teacherForm').on('submit', function () {
-			var _this = $(this);
-
-			_this.ajaxSubmit({
-				url: '/teacher/add',
-				type: 'post',
-				success: function (data) {
-					alert(data.msg);
-					if(data.code == 10000) {
-						location.reload();
-					}
-				}
-			});
-
-			return false;
-		})
+		seajs.use('/scripts/teacher/add');
 	</script>
 {{/block}}
 

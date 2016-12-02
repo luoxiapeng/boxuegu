@@ -32,6 +32,6 @@
 
 {{#block ('script')}}
 	<script>
-		seajs.use('/scripts/login');
+		seajs.use('/scripts/login/index');
 	</script>
 {{/block}}

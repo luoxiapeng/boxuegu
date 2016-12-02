@@ -12,7 +12,8 @@ seajs.config({
 		uploadify: 'uploadify/jquery.uploadify.js',
 		region: 'region/jquery.region.js',
 		datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker.js',
-		language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js'
+		language: 'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',
+		template: 'artTemplate/template-native.js'
 	},
 	preload: ['bootstrap', '/scripts/common']
 });

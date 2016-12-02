@@ -104,7 +104,7 @@
 
 {{#block ('script')}}
 	<script>
-		seajs.use('/scripts/profile');
+		seajs.use('/scripts/dashboard/profile');
 	</script>
 {{/block}}
 
