@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<div class="body advert">
@@ -175,4 +175,12 @@
 			<li><a href="#">下一页</a></li>
 		</ul>
 	</div>
+{{/block}}
+
+{{#block ('script')}}
+
+	<script>
+		seajs.use();
+	</script>
+
 {{/block}}

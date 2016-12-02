@@ -1,4 +1,4 @@
-{{extend ('../layout')}}
+{{extend ('../layout/index')}}
 
 {{#block ('body')}}
 	<div class="body advert">
@@ -59,4 +59,12 @@
 			</form>
 		</div>
 	</div>
+{{/block}}
+
+{{#block ('script')}}
+
+	<script>
+		seajs.use();
+	</script>
+
 {{/block}}

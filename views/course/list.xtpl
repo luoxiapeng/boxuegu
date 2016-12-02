@@ -39,9 +39,9 @@
 			<div class="course">
 				<div class="pic">
 					{{#if (this.cs_cover)}}
-					<img src="/static/thumbs/{{this.cs_cover}}" alt="">
+					<img src="/thumbs/{{this.cs_cover}}" alt="">
 					{{else}}
-					<img src="/static/images/course.png" alt="">
+					<img src="/images/course.png" alt="">
 					{{/if}}
 				</div>
 				<div class="info">
@@ -64,4 +64,12 @@
 			{{/each}}
 		</div>
 	</div>
+{{/block}}
+
+{{#block ('script')}}
+	
+	<script>
+		seajs.use();
+	</script>
+
 {{/block}}

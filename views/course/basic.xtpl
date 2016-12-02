@@ -12,7 +12,7 @@
 			<div class="brief">
 				<div class="thumb">
 					{{#if (course.cs_cover)}}
-					<img src="/static/thumbs/{{course.cs_cover}}" alt="">
+					<img src="/thumbs/{{course.cs_cover}}" alt="">
 					{{/if}}
 				</div>
 				<dl class="info">
@@ -129,76 +129,9 @@
 	</script>
 {{/block}}
 
-{{#block ('libs')}}
-	<script src="/static/libs/ckeditor/ckeditor.js"></script>
-	<script src="/static/uploadify/jquery.uploadify.js"></script>
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	<script>
-
-		(function () {
-			// 配置ckeditor
-			CKEDITOR.replace('basicEditor', {
-				toolbarGroups: [
-					{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-					{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-					{ name: 'links' },
-					{ name: 'insert' },
-					{ name: 'forms' },
-					'/',
-					{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-					{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-					{ name: 'styles' },
-					{ name: 'colors' }
-				]
-			});
-
-			// 提交表单
-			$('#basicForm').on('submit', function () {
-
-				// 提交ckeditor数据
-				for(instance in CKEDITOR.instances) {
-					CKEDITOR.instances[instance].updateElement();
-				}
-
-				$(this).ajaxSubmit({
-					url: '/course/create/basic',
-					type: 'post',
-					success: function (data) {
-						if(data.code == 10000) {
-							location.href = '/course/create/picture/' + data.result.cs_id;
-						}
-					}
-				});
-
-				return false;
-			});
-
-			// 切换分类
-			$('#getChilds').on('change', function () {
-				var _this = $(this),
-					cg_id = _this.val();
-
-				if(!cg_id) return;
-
-				$.ajax({
-					url: '/course/create/getChild',
-					type: 'post',
-					data: {cg_id: cg_id},
-					success: function (data) {
-						if(data.code == 10000) {
-							var html = template('tpl', {categorys: data.result});
-							_this.next().html(html);
-						}
-					}
-				});
-
-			});
-
-		})();
-
+		seajs.use('/scripts/basic');
 	</script>
 {{/block}}
 

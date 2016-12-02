@@ -31,29 +31,11 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 	
 	<script>
 		
-		$('#createCourse').on('submit', function () {
-			$(this).ajaxSubmit({
-				url: '/course/create',
-				type: 'post',
-				success: function (data) {
-					if(data.code == 10000) {
-						location.href = 'create/basic/' + data.result.id;
-					}
-				}
-			});
-
-			return false;
-		});
-
-
+		seajs.use('/scripts/create');
 
 	</script>
 

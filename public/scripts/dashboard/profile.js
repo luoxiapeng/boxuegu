@@ -72,6 +72,4 @@ define(function (require, exports, module) {
             $('.preview img').attr('src', '/avatars/' + data.result.tc_avatar);
         }
     });	
-
-
 });

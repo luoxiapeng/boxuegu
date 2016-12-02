@@ -54,27 +54,10 @@
 	</div>
 {{/block}}
 
-{{#block ('libs')}}
-	<script src="/static/jquery-form/jquery.form.js"></script>
-{{/block}}
-
 {{#block ('script')}}
 
 	<script>
-		
-		$('.category-add .btn').on('click', function () {
-			var _this = $(this);
-
-			$.ajax({
-				url: '/course/category/update',
-				type: 'post',
-				data: _this.parents('form').serialize(),
-				success: function (data) {
-					location.reload();
-				}
-			});
-		});
-
+		seajs.use('/scripts/category');
 	</script>
 
 {{/block}}

@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 			pathname = location.pathname,
 			href = _this.attr('href').slice(1);
 
-		if(pathname.lastIndexOf(href) == 1) {
+		if(pathname.indexOf(href) == 1) {
 
 			_this.addClass('active');
 			_this.closest('ul').show();
@@ -24,6 +24,9 @@ define(function (require, exports, module) {
 		}
 	});
 
+	NProgress.start();
+	NProgress.done();
+	
 	// Ajax进度条
 	$(document).ajaxStart(function () {
 		NProgress.start();
