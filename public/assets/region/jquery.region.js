@@ -41,7 +41,7 @@
                 type: type,
                 dataType: 'json',
                 success: function (data) {
-                    var data = $.parseJSON(data);
+                    // var data = $.parseJSON(data);
                     if(!data) return;
 
                     // 将请求来的地区数据缓存到本地变量中

@@ -5,7 +5,7 @@ var login = require('../models/authorize');
 
 var teacher = require('../models/teacher');
 
-var region = require('../models/region');
+var region = require('../config/region.json');
 
 var uploader = require('../utils/upload').upload('./uploads/avatars');
 
@@ -36,9 +36,7 @@ router.get('/profile', function (req, res) {
 
 // 获取省市县
 router.get('/region', function (req, res) {
-	region.show(function (data) {
-		res.json(data);
-	});
+	res.json(region);
 });
 
 // 更新资料
