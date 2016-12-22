@@ -13,15 +13,12 @@ define(function (require, exports, module) {
 
     // 图片裁切
     function imageCrop() {
-
+        // 保证只有一个实例
         if(jcrop_api) jcrop_api.destroy();
 
         preview.Jcrop({
             boxWidth: 400,
-            aspectRatio: 2,
-            onSelect: function () {
-                console.log('done');
-            }
+            aspectRatio: 2
         }, function () {
             jcrop_api = this;
 
@@ -36,7 +33,7 @@ define(function (require, exports, module) {
 
             this.newSelection();
             this.setSelect([x1, y1, x2, y2]);
-            this.refresh();
+            // this.refresh();
 
             // 缩略图
             thumbnail = this.initComponent('Thumbnailer', {width: 240, height: 120, thumb: '.thumb' });

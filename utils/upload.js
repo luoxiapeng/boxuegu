@@ -16,6 +16,5 @@ exports.upload = function (path) {
 		}
 	});
 
-
 	return multer({storage: storage});
 };

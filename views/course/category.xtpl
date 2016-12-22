@@ -37,10 +37,10 @@
 					<label for="" class="col-md-4 control-label">是否显示</label>
 					<div class="col-md-3">
 						<label class="radio-inline">
-							<input type="radio" {{#if (category.cg_is_hide === 0)}} checked {{/if}} name="cg_is_hide" value="0"> 是
+							<input type="radio" {{#if (!category.cg_is_hide)}} checked {{/if}} name="cg_is_hide" value="0"> 是
 						</label>
 						<label class="radio-inline">
-							<input type="radio" {{#if (category.cg_is_hide === 1)}} checked {{/if}} name="cg_is_hide" value="1"> 否
+							<input type="radio" {{#if (category.cg_is_hide)}} checked {{/if}} name="cg_is_hide" value="1"> 否
 						</label>
 					</div>
 				</div>

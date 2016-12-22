@@ -1,9 +1,11 @@
 
 exports.getTree = getTree;
 
-function getTree(arr, pid, c) {
+function getTree(arr, pid) {
 
 	var temp = [];
+
+	var args = arguments;
 
 	(function () {
 		for(var i=0; i<arr.length; i++) {
@@ -13,18 +15,17 @@ function getTree(arr, pid, c) {
 				// 添加子节点
 				arr[i].childs = [];
 
-				if(c) {
-					c.push(arr[i]);
-					continue;
+				if(args[2]) {
+					args[2].push(arr[i]);
+				} else {
+					temp.push(arr[i]);
 				}
-
-				temp.push(arr[i]);
 
 				getTree(arr, arr[i]['cg_id'], arr[i].childs);
 			}
 		}
 	})();
-
+	
 	return temp;
 }
 

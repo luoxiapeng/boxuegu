@@ -35,7 +35,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">入职时间</label>
 					<div class="col-md-4">
-						<input type="text" name="tc_join_time" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-date-end-date="0d" class="form-control input-sm" value="{{tc_join_time}}">
+						<input type="text" name="tc_join_date" data-provide="datepicker" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" data-date-end-date="0d" class="form-control input-sm" value="{{tc_join_date}}">
 					</div>
 				</div>
 				<div class="form-group">
