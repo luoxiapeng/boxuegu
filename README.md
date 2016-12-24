@@ -6,7 +6,6 @@ Study hard and make progress every day.
 ```bash
 npm install
 ```
+### 注意事项
 
-```bash
-bower install
-```
+    图片裁切使用gm，其依赖[查看](https://www.npmjs.com/package/gm)
