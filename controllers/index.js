@@ -27,7 +27,7 @@ router.get('/profile', function (req, res) {
 	teacher.find(tc_id, function (err, result) {
 		var data = result[0];
 
-		data.tc_brithday = moment(Number(data.tc_brithday)).format('YYYY-MM-DD');
+		data.tc_birthday = moment(Number(data.tc_birthday)).format('YYYY-MM-DD');
 		data.tc_join_time = moment(Number(data.tc_join_time)).format('YYYY-MM-DD');
 
 		res.render('dashboard/profile', {teacher: data});
@@ -44,7 +44,7 @@ router.post('/profile/update', function (req, res) {
 	var body = req.body;
 
 	// 转成时间戳
-	body.tc_brithday = moment(body.tc_brithday || 0).format('x');
+	body.tc_birthday = moment(body.tc_birthday || 0).format('x');
 
 	teacher.update(body, function (err, result) {
 		if(err) return;

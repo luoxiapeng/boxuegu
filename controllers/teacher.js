@@ -19,7 +19,7 @@ router.get('/', function (req, res) {
 		var data = [];
 		// 处理时间格式
 		result.forEach(function (val, key) {
-			val.tc_brithday = moment(Number(val.tc_brithday)).format('YYYY-MM-DD');
+			val.tc_birthday = moment(Number(val.tc_birthday)).format('YYYY-MM-DD');
 			val.tc_join_time = moment(Number(val.tc_join_time)).format('YYYY-MM-DD');
 
 			data.push(val);
@@ -94,7 +94,7 @@ router.post('/view', function (req, res) {
 
 		var data = result[0];
 		// 格式化日期
-		data.tc_brithday = moment(Number(data.tc_brithday)).format('YYYY-MM-DD');
+		data.tc_birthday = moment(Number(data.tc_birthday)).format('YYYY-MM-DD');
 		data.tc_join_time = moment(Number(data.tc_join_time)).format('YYYY-MM-DD');
 
 		res.json({
